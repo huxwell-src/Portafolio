@@ -1,0 +1,102 @@
+h1::before{
+    content: '<h1>';
+    font-weight: 400;
+    font-size: 1rem;
+    position: relative;
+    bottom: 60px;
+    right: 85px;
+    color: #2C3E50;
+}
+
+h1 span::before{
+    content: '</h1>';
+    font-weight: 400;
+    font-size: 1rem;
+    position: relative;
+    right: 15px;
+    top: 86px;
+    color: #2C3E50;
+}
+
+.start::before{
+    content: '<';
+    color: #2C3E50;
+}
+
+.final::before{
+    content: '</';
+    color: #2C3E50;
+}
+
+.html::after{
+    content: '>';
+    color: #2C3E50;
+}
+
+.scroll {
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 70px;
+    border-radius: 25px;
+    border: 2px solid #2c3e50;
+    overflow: hidden;
+  }
+  .scroll:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    width: 4px;
+    height: 10px;
+    border-radius: 3px;
+    background: #2c3e50;
+    -webkit-animation: scroll 2s ease-in-out infinite;
+            animation: scroll 2s ease-in-out infinite;
+  }
+  @-webkit-keyframes scroll {
+    0% {
+      transform: translate(-50%, 30%);
+      opacity: 1;
+    }
+    25% {
+      opacity: 0;
+    }
+    98% {
+      transform: translate(-50%, 10000%);
+      opacity: 0;
+    }
+    99% {
+      top: 25%;
+      opacity: 0;
+    }
+    100% {
+      top: 0;
+      opacity: 0;
+    }
+  }
+  @keyframes scroll {
+    0% {
+      transform: translate(-50%, 30%);
+      opacity: 1;
+    }
+    25% {
+      opacity: 0;
+    }
+    98% {
+      transform: translate(-50%, 10000%);
+      opacity: 0;
+    }
+    99% {
+      top: 25%;
+      opacity: 0;
+    }
+    100% {
+      top: 0;
+      opacity: 0;
+    }
+  }
