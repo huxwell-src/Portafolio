@@ -3,7 +3,7 @@ import './css/inicio.css'
 
 const Inicio = () => {
   return (
-    <section className=' bg-slate-900 w-10/12 h-screen m-auto py-16' id='Inicio'>
+    <section className=' bg-slate-900 w-10/12 h-screen m-auto py-16 dark:bg-hyper-dark-blue' id='Inicio'>
       <p className='html start'>Section</p>
         <div className='bg-slate-900 w-full h-full flex items-center justify-between'>
 
