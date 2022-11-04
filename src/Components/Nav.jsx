@@ -1,5 +1,5 @@
 import React from 'react'
-import Menu from './menu'
+//import Menu from './menu'
 import Dark from './Dark'
 import './css/nav.css'
 
