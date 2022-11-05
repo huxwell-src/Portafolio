@@ -1,7 +1,0 @@
-.logo::before{
-    content: "</";
-}
-
-.logo::after {
-    content: ">";
-}

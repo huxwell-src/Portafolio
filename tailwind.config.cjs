@@ -14,6 +14,9 @@ module.exports = {
       height: {
         'header': '85vh',
       },
+      aspectRatio: {
+        '4/3': '4 / 3',
+      },
       fontFamily: {
         'poppins' : 'Poppins',
         'roboto' : 'Roboto'

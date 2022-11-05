@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { Component } from 'react'
 import './css/inicio.css'
 
 const Inicio = () => {
   return (
-    <section className=' bg-slate-900 w-10/12 h-screen m-auto py-16 dark:bg-hyper-dark-blue' id='Inicio'>
-      <p className='html start'>Section</p>
+    <section className=' bg-slate-900 w-10/12 h-screen m-auto py-20 before:c dark:bg-hyper-dark-blue' id='inicio'>
+      <p className='text-dark-blue z-20 before:content-["<"] after:content-["/>"] dark:text-light-gray'>Section</p>
         <div className='bg-slate-900 w-full h-full flex items-center justify-between'>
 
         <svg className='absolute bottom-2/4 right-3/4 z-0' width="361" height="319" viewBox="0 0 361 319" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -79,9 +79,9 @@ const Inicio = () => {
             </ul>
           </div>
           <div className='text-end z-10'>
-              <h1 className='text-7xl	 text-dark-blue dark:text-light-gray text-right font-black'>
+              <h1 className='text-7xl	 text-dark-blue dark:text-light-gray text-right font-black before:content-["<h1>"] dark:before:text-light-gray'>
                   Hola, Soy Nicolas <br />
-                  <span className='text-light-blue dark:text-hyper-light-blue'>    
+                  <span className='text-light-blue dark:text-hyper-light-blue before:content-["<h1>"] dark:before:text-light-gray'>    
                     Desarrollador Web <br />
                     Frontend
                   </span>
@@ -90,11 +90,12 @@ const Inicio = () => {
                 Descargar CV
               </button>
           </div>
-          <div class='scroll'></div>
+          <div class='scroll border-solid border-2 border-dark-blue dark:border-light-gray'></div>
         </div> 
-        <p className='html final' >Section</p>
+        <p className='text-dark-blue before:content-["<"] after:content-["/>"] dark:text-light-gray' >Section</p>
     </section>
   )
 }
 
 export default Inicio
+
