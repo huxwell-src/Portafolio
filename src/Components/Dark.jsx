@@ -1,12 +1,24 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import useDarkSide from "../hook/useDarkSide.jsx";
+import { DarkModeSwitch } from 'react-toggle-dark-mode'
 
 export default function Dark() {
 
+    const [colorTheme, setTheme] = useDarkSide();
+    const [darkSide, setDarkSide] = useState( colorTheme == "light" ? true : false);
+
+    const toggleDarkMode = (checked) => {
+      setTheme(colorTheme)
+      setDarkSide(checked);
+    };
+
     return (
-        <label htmlFor="check" className="bg-hyper-dark-blue w-12 h-6 rounded-full relative cursor-pointer dark:bg-light-gray">
-          <input type="checkbox" id="check" className="sr-only peer"/>
-          <span className="w-2/5 h-4/5 bg-day absolute rounded-full  top-[2.5px] left-0.5 scale-150 bg-sun  bg-no-repeat	bg-center bg-75%
-          peer-checked:bg-dark-blue peer-checked:left-7 transition-all duration-300 peer-checked:bg-moon"></span>
-        </label> 
+        <div>
+          <DarkModeSwitch
+            checked={darkSide}
+            onChange={toggleDarkMode}
+            size={35}
+          />
+        </div>
     );
 }

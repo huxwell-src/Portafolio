@@ -89,7 +89,7 @@ const Inicio = () => {
                   </span>
               </h1>
               <button className='bg-dark-blue dark:bg-light-gray w-36 h-11 text-light-gray dark:text-dark-blue rounded-full border-none font-semibold mt-2.5 hover:scale-125 duration-150 ease-in-out'>
-              {t("home.cv")}
+                {t("home.front")}
               </button>
           </div>
           <div class='scroll border-solid border-2 border-dark-blue dark:border-light-gray'></div>
