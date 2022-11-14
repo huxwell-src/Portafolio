@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import './css/inicio.css'
+import {useTranslation} from "react-i18next"
 
 const Inicio = () => {
+  const [t, i18n] = useTranslation("global");
   return (
     <section className=' bg-slate-900 w-10/12 h-screen m-auto py-20 before:c dark:bg-hyper-dark-blue' id='inicio'>
       <p className='text-dark-blue z-20 before:content-["<"] after:content-["/>"] dark:text-light-gray'>Section</p>
-        <div className='bg-slate-900 w-full h-full flex items-center justify-between'>
+         <div className='bg-slate-900 w-full h-full flex items-center justify-between'>
 
         <svg className='absolute bottom-2/4 right-3/4 z-0' width="361" height="319" viewBox="0 0 361 319" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M361 138C361 237.687 280.187 318.5 180.5 318.5C80.8126 318.5 0 237.687 0 138C0 38.3126 80.8126 0 180.5 0C280.187 0 361 38.3126 361 138Z" fill="url(#paint0_linear_26_7)"/>
@@ -80,14 +82,14 @@ const Inicio = () => {
           </div>
           <div className='text-end z-10'>
               <h1 className='text-7xl	 text-dark-blue dark:text-light-gray text-right font-black before:content-["<h1>"] dark:before:text-light-gray'>
-                  Hola, Soy Nicolas <br />
+              {t("home.me")} <br />
                   <span className='text-light-blue dark:text-hyper-light-blue before:content-["<h1>"] dark:before:text-light-gray'>    
-                    Desarrollador Web <br />
-                    Frontend
+                  {t("home.dev")} <br />
+                  {t("home.front")}
                   </span>
               </h1>
               <button className='bg-dark-blue dark:bg-light-gray w-36 h-11 text-light-gray dark:text-dark-blue rounded-full border-none font-semibold mt-2.5 hover:scale-125 duration-150 ease-in-out'>
-                Descargar CV
+              {t("home.cv")}
               </button>
           </div>
           <div class='scroll border-solid border-2 border-dark-blue dark:border-light-gray'></div>

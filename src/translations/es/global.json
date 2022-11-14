@@ -1,0 +1,14 @@
+{
+    "nav":{
+        "home" : "Inicio",
+        "skills" : "Habilidades",
+        "projects" : "Projectos",
+        "contacts" : "Contacto"
+    },
+    "home":{
+        "me" : "Hola, Soy Nicolas",
+        "dev" : "Desarrollador Web",
+        "front" : "Frontend",
+        "cv" : "Descargar CV"
+    }
+}
