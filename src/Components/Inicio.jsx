@@ -13,9 +13,8 @@ const Inicio = () => {
           <path d="M361 138C361 237.687 280.187 318.5 180.5 318.5C80.8126 318.5 0 237.687 0 138C0 38.3126 80.8126 0 180.5 0C280.187 0 361 38.3126 361 138Z" fill="url(#paint0_linear_26_7)"/>
           <defs>
           <linearGradient id="paint0_linear_26_7" x1="180.5" y1="0" x2="180.5" y2="318.5" gradientUnits="userSpaceOnUse">
-          <stop stop-color="#3598DB" stop-opacity="0.65"/>
-          <stop offset="0.9998" stop-color="#F2F2F0" stop-opacity="0.998212"/>
-          <stop offset="0.9999" stop-color="white" stop-opacity="0.65"/>
+          <stop stopColor="#3498DB" stopOpacity="0.65"/>
+          <stop offset="1" stopColor="white" stopOpacity="0.65"/>
           </linearGradient>
           </defs>
         </svg>
@@ -24,8 +23,8 @@ const Inicio = () => {
           <ellipse cx="162" cy="152" rx="162" ry="152" fill="url(#paint0_linear_26_8)"/>
           <defs>
           <linearGradient id="paint0_linear_26_8" x1="162" y1="0" x2="162" y2="304" gradientUnits="userSpaceOnUse">
-          <stop stop-color="#3498DB" stop-opacity="0.65"/>
-          <stop offset="1" stop-color="white" stop-opacity="0.65"/>
+          <stop stopColor="#3498DB" stopOpacity="0.65"/>
+          <stop offset="1" stopColor="white" stopOpacity="0.65"/>
           </linearGradient>
           </defs>
         </svg>
@@ -34,8 +33,8 @@ const Inicio = () => {
           <circle cx="82" cy="82" r="82" fill="url(#paint0_linear_26_9)"/>
           <defs>
           <linearGradient id="paint0_linear_26_9" x1="82" y1="0" x2="82" y2="164" gradientUnits="userSpaceOnUse">
-          <stop stop-color="#3498DB" stop-opacity="0.65"/>
-          <stop offset="1" stop-color="white" stop-opacity="0.65"/>
+          <stop stopColor="#3498DB" stopOpacity="0.65"/>
+          <stop offset="1" stopColor="white" stopOpacity="0.65"/>
           </linearGradient>
           </defs>
         </svg>

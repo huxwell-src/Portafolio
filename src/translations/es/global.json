@@ -2,7 +2,7 @@
     "nav":{
         "home" : "Inicio",
         "skills" : "Habilidades",
-        "projects" : "Projectos",
+        "projects" : "Proyectos",
         "contacts" : "Contacto"
     },
     "home":{
