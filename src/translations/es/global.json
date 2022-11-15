@@ -10,5 +10,15 @@
         "dev" : "Desarrollador Web",
         "front" : "Frontend",
         "cv" : "Descargar CV"
+    },
+    "skills" : {
+        "skills" : "Habilidades",
+        "tools" : "Herramientas",
+        "important" : "Mas importantes",
+        "database" : "Base de datos",
+        "framework" : "Framework",
+        "languages" : "Lenguajes",
+        "lowcode" : "Low-code",
+        "mobile" : "Mobile"
     }
 }
