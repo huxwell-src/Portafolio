@@ -1,15 +1,17 @@
-import React, { Component } from 'react'
-import './css/inicio.css'
-import {useTranslation} from "react-i18next"
+import React, { Component } from 'react';
+import './css/inicio.css';
+import {useTranslation} from "react-i18next";
 
 const Inicio = () => {
+
   const [t, i18n] = useTranslation("global");
+
   return (
     <section className=' bg-slate-900 w-10/12 h-screen m-auto py-20 before:c dark:bg-hyper-dark-blue' id='inicio'>
       <p className='text-dark-blue z-20 before:content-["<"] after:content-["/>"] dark:text-light-gray'>Section</p>
          <div className='bg-slate-900 w-full h-full flex items-center justify-between'>
 
-        <svg className='absolute bottom-2/4 right-3/4 z-0' width="361" height="319" viewBox="0 0 361 319" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg className='absolute md:top-28 md:scale-90 md:left-4 xl:scale-90 xl:top-28 xl:left-6 2xl:bottom-2/4 2xl:right-3/4 z-0' width="361" height="319" viewBox="0 0 361 319" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M361 138C361 237.687 280.187 318.5 180.5 318.5C80.8126 318.5 0 237.687 0 138C0 38.3126 80.8126 0 180.5 0C280.187 0 361 38.3126 361 138Z" fill="url(#paint0_linear_26_7)"/>
           <defs>
           <linearGradient id="paint0_linear_26_7" x1="180.5" y1="0" x2="180.5" y2="318.5" gradientUnits="userSpaceOnUse">
@@ -19,7 +21,7 @@ const Inicio = () => {
           </defs>
         </svg>
 
-        <svg className='absolute left-1/3 bottom-44' width="324" height="304" viewBox="0 0 324 304" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg className='absolute md:bottom-12 md:scale-90 md:left-[-2rem] xl:bottom-4 xl:scale-75 xl:left-36 2xl:left-1/3 2xl:bottom-44' width="324" height="304" viewBox="0 0 324 304" fill="none" xmlns="http://www.w3.org/2000/svg">
           <ellipse cx="162" cy="152" rx="162" ry="152" fill="url(#paint0_linear_26_8)"/>
           <defs>
           <linearGradient id="paint0_linear_26_8" x1="162" y1="0" x2="162" y2="304" gradientUnits="userSpaceOnUse">
@@ -29,7 +31,7 @@ const Inicio = () => {
           </defs>
         </svg>
 
-        <svg className='absolute right-1/3 top-1/4 z-0' width="164" height="164" viewBox="0 0 164 164" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg className='absolute md:right-80 md:top-40 xl:right-1/3 xl:top-20 xl:scale-90 2xl:right-1/3 2xl:top-1/4 z-0' width="164" height="164" viewBox="0 0 164 164" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="82" cy="82" r="82" fill="url(#paint0_linear_26_9)"/>
           <defs>
           <linearGradient id="paint0_linear_26_9" x1="82" y1="0" x2="82" y2="164" gradientUnits="userSpaceOnUse">
@@ -87,8 +89,8 @@ const Inicio = () => {
                   {t("home.front")}
                   </span>
               </h1>
-              <button className='bg-dark-blue dark:bg-light-gray w-36 h-11 text-light-gray dark:text-dark-blue rounded-full border-none font-semibold mt-2.5 hover:scale-125 duration-150 ease-in-out'>
-                {t("home.cv")}
+              <button className='bg-dark-blue dark:bg-light-gray w-36 h-11 text-light-gray dark:text-dark-blue rounded-full border-none font-semibold mt-2.5 hover:scale-125 active:scale-100 duration-200 ease-in-out'>
+                <a href="public\NicolasGonzalez.pdf" >{t("home.cv")}</a>
               </button>
           </div>
           <div class='scroll border-solid border-2 border-dark-blue dark:border-light-gray'></div>

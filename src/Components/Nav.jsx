@@ -1,7 +1,6 @@
 import React from 'react'
 import Dark from './Dark'
 import BurgerButton from './BurgerButton'
-import "./css/nav.css"
 import {useTranslation} from "react-i18next"
 
 const Nav = () => {
@@ -41,7 +40,7 @@ const Nav = () => {
                         
                             <button className='text-light-blue font-poppins font-semibold  dark:text-light-gray flex items-center'
                             onClick={() => i18n.changeLanguage("en")}>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 512 512" className='mx-2 my-1 hover:scale-125 duration-150 ease-in-out'>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 512 512" className='mx-2 my-1 hover:scale-125 active:scale-100 duration-300 ease-in-out'>
                                     <mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/>
                                     </mask><g mask="url(#a)">
                                     <path fill="#eee" d="M256 0h256v64l-32 32 32 32v64l-32 32 32 32v64l-32 32 32 32v64l-256 32L0 448v-64l32-32-32-32v-64z"/>
@@ -54,7 +53,7 @@ const Nav = () => {
 
                             <button className='text-light-blue font-poppins font-semibold  dark:text-light-gray  flex items-center'
                             onClick={() => i18n.changeLanguage("es")}>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 512 512" className='mx-2 my-1 hover:scale-125 duration-150 ease-in-out'>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 512 512" className='mx-2 my-1 hover:scale-125 active:scale-100 duration-300 ease-in-out'>
                                     <mask id="a"><circle cx="256" cy="256" r="256" fill="#fff"/></mask>
                                     <g mask="url(#a)"><path fill="#d80027" d="m0 256 254.5-51.3L512 256v256H0z"/>
                                     <path fill="#0052b4" d="M0 0h256l52.7 132.8L256 256H0z"/>
