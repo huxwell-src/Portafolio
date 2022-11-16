@@ -7,8 +7,6 @@ const Nav = () => {
 
     const [t, i18n] = useTranslation("global");
 
- 
-
   return (
     <nav className='w-full h-20 flex flex-col items-center z-50 bg-white dark:bg-hyper-dark-blue fixed scroll-smooth'>
         <div className='md:w-10/12 w-full h-16 mt-2'>
