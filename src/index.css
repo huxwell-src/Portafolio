@@ -2,3 +2,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.tittle{
+    @apply text-5xl font-bold text-light-blue ml-6;
+}

@@ -13,12 +13,7 @@
     },
     "skills" : {
         "skills" : "Skills",
-        "tools" : "Tools",
-        "important" : "Most important",
-        "database" : "Database",
-        "framework" : "Framework",
-        "languages" : "Languages",
-        "lowcode" : "Low-code",
-        "mobile" : "Mobile"
+        "desc" : "Through my experience in different software projects, I have managed to learn many different technologies, this within the area of development as such, as well as design tools, which have helped me and greatly facilitated my work as a developer through its use.",
+        "tools" : "Tools"
     }
 }
