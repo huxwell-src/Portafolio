@@ -1,6 +1,7 @@
 {
     "nav":{
         "home" : "Home",
+        "about" : "About me", 
         "skills" : "Skills",
         "projects" : "Projects",
         "contacts" : "Contacts"
@@ -15,5 +16,10 @@
         "skills" : "Skills",
         "desc" : "Through my experience in different software projects, I have managed to learn many different technologies, this within the area of development as such, as well as design tools, which have helped me and greatly facilitated my work as a developer through its use.",
         "tools" : "Tools"
+    },
+    "about" : {
+        "duoc" : "Computer Engineering at DuocUC",
+        "me" : "Who am I?",
+        "history" : "My history"
     }
 }

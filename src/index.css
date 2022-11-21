@@ -1,8 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Roboto:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 .tittle{
-    @apply text-5xl font-bold text-light-blue ml-6;
+    @apply text-5xl font-bold text-light-blue dark:text-hyper-light-blue;
+}
+
+.text{
+    @apply text-dark-blue dark:text-light-gray;
 }

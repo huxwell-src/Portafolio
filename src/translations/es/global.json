@@ -1,6 +1,7 @@
 {
     "nav":{
         "home" : "Inicio",
+        "about" : "Sobre mi",
         "skills" : "Habilidades",
         "projects" : "Proyectos",
         "contacts" : "Contacto"
@@ -15,5 +16,10 @@
         "skills" : "Habilidades",
         "desc" : "A través de mi experiencia en distintos proyectos de software, he logrado aprender muchas y distintas tecnologías, esto dentro del área del desarrollo como tal, así como también herramientas de diseño, las cuales me han ayudado y facilitado arduamente mi labor como desarrollador a través de la su uso.",
         "tools" : "Herramientas"
+    },
+    "about" : {
+        "duoc" : "Ingenieria en Informatica en DuocUC",
+        "me" : "¿Quien soy?",
+        "history" : "Mi historia"
     }
 }

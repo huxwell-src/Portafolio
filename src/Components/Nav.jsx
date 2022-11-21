@@ -22,6 +22,10 @@ const Nav = () => {
                         </li>
                         <li>
                             <a className='mx-4 text-dark-blue hover:text-light-blue font-semibold duration-150 ease-in-out dark:text-light-gray dark:hover:text-hyper-light-blue' 
+                            href="#About"> {t("nav.about")} </a>
+                        </li>
+                        <li>
+                            <a className='mx-4 text-dark-blue hover:text-light-blue font-semibold duration-150 ease-in-out dark:text-light-gray dark:hover:text-hyper-light-blue' 
                             href="#skills"> {t("nav.skills")} </a>
                         </li>
                         <li>

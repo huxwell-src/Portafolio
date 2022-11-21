@@ -2,7 +2,7 @@ import { Tooltip, Button } from "@material-tailwind/react";
 
 export const LogoList = ({ logo }) => {
   return (
-    <div className="w-[75%] m-auto">
+    <div className="2xl:w-[75%] w-full m-auto">
         {logo.map(logo =>(
             <Tooltip content={logo.title} >
                 <a href={logo.link}  target="_blank" key={logo.id} >
