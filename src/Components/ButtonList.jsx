@@ -1,6 +1,6 @@
 export const ButtonList = ({categories, filterCategory}) => {
   return (
-    <div className="categories">
+    <div className="categories mx-2 md:mx-0">
         {categories.map(category => (
             <button
                 key={category}
