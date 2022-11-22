@@ -12,7 +12,7 @@ const About = () => {
             <h3 className='text-4xl font-bold text-dark-blue dark:text-light-gray ' > {t("about.me")} </h3>
             <h2 className='tittle '> Nicolas Gonzalez Berrios </h2>
             <img src="https://i.ibb.co/sQVxczv/Nico.jpg" alt=""
-            className='h-80 w-80 object-cover rounded-full shadow-sm md:my-6 m-auto  md:margin-0' />
+            className='h-80 w-80 object-cover rounded-full shadow-sm md:my-6 m-auto  md:margin-0 my-4' />
             <div className='flex items-center '>
               <div className='mr-4 ml-6 md:ml-0' >
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" className='dark:fill-light-gray' fill="#2C3E50" class="bi bi-building" viewBox="0 0 16 16">
