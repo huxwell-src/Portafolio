@@ -7,7 +7,7 @@ const About = () => {
 
   return (
     <section id='About' >
-        <div className='md:w-10/12 w-[100vw] m-auto flex flex-col  sm:flex-row justify-between sm:mx-6'>
+        <div className='md:w-10/12 w-[100vw] m-auto flex flex-col  sm:flex-row justify-between mx-6 md:mx-0 '>
           <div className='lg:w-[50%] '>
             <h3 className='text-4xl font-bold text-dark-blue dark:text-light-gray ' > {t("about.me")} </h3>
             <h2 className='tittle '> Nicolas Gonzalez Berrios </h2>
