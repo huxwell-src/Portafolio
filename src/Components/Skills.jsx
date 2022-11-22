@@ -26,7 +26,7 @@ const Skills = () => {
 
   return (
     <section id='skills' className='my-10'>
-        <div className='w-10/12  m-auto flex flex-col  sm:flex-row justify-between '>
+        <div className='md:w-10/12 w-[125%] m-auto flex flex-col  sm:flex-row justify-between '>
             <div className='lg:w-[50%]'> 
               <h2 className='tittle ml-6'>{t("skills.skills")}</h2>
               <p className='text ml-6 mb-6 mt-3'>{t("skills.desc")}</p>
