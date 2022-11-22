@@ -8,13 +8,13 @@ const About = () => {
   return (
     <section id='About' >
         <div className='md:w-10/12 w-[100vw] m-auto flex flex-col  sm:flex-row justify-between '>
-          <div className='lg:w-[50%] '>
+          <div className='lg:w-[50%] mx-6 md:mx-0'>
             <h3 className='text-4xl font-bold text-dark-blue dark:text-light-gray ' > {t("about.me")} </h3>
             <h2 className='tittle '> Nicolas Gonzalez Berrios </h2>
             <img src="https://i.ibb.co/sQVxczv/Nico.jpg" alt=""
-            className='h-80 w-80 object-cover rounded-full shadow-sm my-6' />
+            className='h-80 w-80 object-cover rounded-full shadow-sm md:my-6 m-auto  md:margin-0' />
             <div className='flex items-center '>
-              <div className='mr-4' >
+              <div className='mr-4 ml-6 md:ml-0' >
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" className='dark:fill-light-gray' fill="#2C3E50" class="bi bi-building" viewBox="0 0 16 16">
                   <path d="M4 2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1Zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1Zm3.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1ZM4 5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1ZM7.5 5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1ZM4.5 8a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Zm2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1Zm3.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1Z"/>
                   <path d="M2 1a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V1Zm11 0H3v14h3v-2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5V15h3V1Z"/>
@@ -25,7 +25,7 @@ const About = () => {
               </div>
             </div>
             <div className='flex items-center mt-4 '>
-              <div className='mr-4' >
+              <div className='mr-4 ml-6 md:ml-0' >
                 <svg xmlns="http://www.w3.org/2000/svg" className='dark:fill-light-gray' width="25" height="25" fill="#2C3E50" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
                   <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
                 </svg>
@@ -35,7 +35,7 @@ const About = () => {
               </div>
             </div>
           </div>
-          <div className='lg:w-[50%] ' >
+          <div className='lg:w-[50%] mx-6 md:mx-0' >
             <div>
               <h2  className='tittle my-4 '>
                 {t("about.history")} 
