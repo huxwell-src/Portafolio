@@ -30,7 +30,7 @@ const Skills = () => {
             <div className='lg:w-[50%]'> 
               <h2 className='tittle ml-6'>{t("skills.skills")}</h2>
               <p className='text md:ml-6 mx-6 mb-6 mt-3'>{t("skills.desc")}</p>
-              <h2 className='tittle ml-6'>{t("skills.tools")}</h2>
+              <h2 className='tittle md:ml-6 mx-6'>{t("skills.tools")}</h2>
               <ButtonList categories={categories} filterCategory={filterCategory} />
             </div>
             <div className='lg:w-[50%]'>
