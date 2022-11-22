@@ -8,7 +8,7 @@ const About = () => {
   return (
     <section id='About' >
         <div className='md:w-10/12 w-[100vw] m-auto flex flex-col  sm:flex-row justify-between'>
-          <div className='w-[50%] '>
+          <div className='lg:w-[50%] '>
             <h3 className='text-4xl font-bold text-dark-blue dark:text-light-gray ' > {t("about.me")} </h3>
             <h2 className='tittle '> Nicolas Gonzalez Berrios </h2>
             <img src="https://i.ibb.co/sQVxczv/Nico.jpg" alt=""
@@ -35,7 +35,7 @@ const About = () => {
               </div>
             </div>
           </div>
-          <div className='w-[50%] ' >
+          <div className='lg:w-[50%] ' >
             <div>
               <h2  className='tittle my-4 '>
                 {t("about.history")} 
