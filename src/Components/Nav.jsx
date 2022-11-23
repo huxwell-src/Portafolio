@@ -9,7 +9,7 @@ const Nav = () => {
     const [t, i18n] = useTranslation("global");
 
   return (
-    <nav className='w-full h-20 flex flex-col items-center z-50 bg-white dark:bg-hyper-dark-blue fixed scroll-smooth'>
+    <nav className='w-full h-20 flex flex-col items-center z-50 bg-white dark:bg-hyper-dark-blue fixed scroll-smooth invisible'>
         <div className='md:w-10/12 w-full h-16 mt-2'>
             <div className='flex items-center justify-between flex-row '>
                 <div className='text-5xl font-bold text-dark-blue font-roboto dark:text-light-gray before:content-["</"] after:content-[">"] '>
