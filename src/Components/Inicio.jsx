@@ -7,10 +7,10 @@ const Inicio = () => {
   const [t, i18n] = useTranslation("global");
 
   return (
-    <section className=' bg-slate-900 w-10/12  md:h-screen m-auto py-20 before:c dark:bg-hyper-dark-blue' id='inicio'>
+    <section className=' bg-slate-900 w-10/12  md:h-[92vh] m-auto before:c dark:bg-hyper-dark-blue' id='inicio'>
       <p className='text-dark-blue z-20 before:content-["<"] after:content-["/>"] dark:text-light-gray invisible md:visible'>Section</p>
-         <div className='bg-slate-900 w-full h-full flex flex-col-reverse md:flex-row  items-center md:justify-between justify-end '>
-
+         <div className='bg-slate-900 w-full h-[90%] flex flex-col-reverse md:flex-row  items-center md:justify-between justify-end '>
+        {/* 
         <svg className='absolute md:top-28 md:scale-90 md:left-4 xl:scale-90 xl:top-28 xl:left-6 2xl:bottom-2/4 2xl:right-3/4 z-0' width="361" height="319" viewBox="0 0 361 319" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M361 138C361 237.687 280.187 318.5 180.5 318.5C80.8126 318.5 0 237.687 0 138C0 38.3126 80.8126 0 180.5 0C280.187 0 361 38.3126 361 138Z" fill="url(#paint0_linear_26_7)"/>
           <defs>
@@ -41,7 +41,9 @@ const Inicio = () => {
           </defs>
         </svg>
 
+        */}
 
+        
           <div className='z-20 w-[95vw] '>
             <ul className='flex md:flex-col' >
 
@@ -96,6 +98,8 @@ const Inicio = () => {
           <div class='scroll border-solid border-2 border-dark-blue dark:border-light-gray invisible md:visible '></div>
         </div> 
         <p className='text-dark-blue before:content-["<"] after:content-["/>"] dark:text-light-gray invisible md:visible ' >Section</p>
+
+        
     </section>
   )
 }

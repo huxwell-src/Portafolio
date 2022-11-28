@@ -3,12 +3,13 @@ import Nav from './Components/Nav'
 import Inicio from './Components/Inicio'
 import Skills from './Components/Skills.jsx'
 import About from './Components/About'
+import NavBar from './Components/Nav'
 
 const App = () => {
 
   return (
     <div>
-      <Nav/>
+      <NavBar/>
       <Inicio/>
       <About/>
       <Skills/>
