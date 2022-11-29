@@ -9,7 +9,7 @@ const Inicio = () => {
 
   return (
     <section className=' bg-slate-900 w-10/12  h-[92vh] m-auto before:c dark:bg-hyper-dark-blue' id='inicio'>
-      <div className='flex flex-row-reverse md:hidden'>
+      <div className='flex flex-row-reverse md:hidden w-[90vw] '>
         <Dark/>
       </div>
       <p className='text-dark-blue z-20 before:content-["<"] after:content-["/>"] dark:text-light-gray invisible md:visible'>Section</p>
