@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
 import './css/inicio.css';
 import {useTranslation} from "react-i18next";
+import Dark from './Dark'
 
 const Inicio = () => {
 
   const [t, i18n] = useTranslation("global");
 
   return (
-    <section className=' bg-slate-900 w-10/12  md:h-[92vh] m-auto before:c dark:bg-hyper-dark-blue' id='inicio'>
+    <section className=' bg-slate-900 w-10/12  h-[92vh] m-auto before:c dark:bg-hyper-dark-blue' id='inicio'>
+      <div className='flex flex-row-reverse md:hidden'>
+        <Dark/>
+      </div>
       <p className='text-dark-blue z-20 before:content-["<"] after:content-["/>"] dark:text-light-gray invisible md:visible'>Section</p>
-         <div className='bg-slate-900 w-full h-[90%] flex flex-col-reverse md:flex-row  items-center md:justify-between justify-end '>
+         <div className='bg-slate-900 w-full h-[90%] flex flex-col-reverse md:flex-row  items-center md:justify-between  justify-evenly '>
         {/* 
         <svg className='absolute md:top-28 md:scale-90 md:left-4 xl:scale-90 xl:top-28 xl:left-6 2xl:bottom-2/4 2xl:right-3/4 z-0' width="361" height="319" viewBox="0 0 361 319" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M361 138C361 237.687 280.187 318.5 180.5 318.5C80.8126 318.5 0 237.687 0 138C0 38.3126 80.8126 0 180.5 0C280.187 0 361 38.3126 361 138Z" fill="url(#paint0_linear_26_7)"/>
@@ -46,7 +50,6 @@ const Inicio = () => {
         
           <div className='z-20 w-[95vw] '>
             <ul className='flex md:flex-col' >
-
               <li>
                 <a href="https://github.com/huxwell-src"  target="_blank">  
                 <svg xmlns="http://www.w3.org/2000/svg" className='hover:scale-125 duration-150 ease-in-out' viewBox="0 0 48 48" width="80px" height="80px">
@@ -83,7 +86,7 @@ const Inicio = () => {
 
             </ul>
           </div>
-          <div className='text-end z-10'>
+          <div className='text-end z-10 mr-6 w-screen'>
               <h1 className='md:text-7xl text-5xl	 text-dark-blue dark:text-light-gray text-right font-black before:content-["<h1>"] before:invisible md:before:visible dark:before:text-light-gray'>
               {t("home.me")} <br />
                   <span className='text-light-blue dark:text-hyper-light-blue before:content-["<h1>"] before:invisible md:before:visible dark:before:text-light-gray'>    

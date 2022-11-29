@@ -13,12 +13,10 @@ export default function Dark() {
     };
 
     return (
-      <div className="hover:scale-110 duration-150 ease-in-out toggle">
       <DarkModeSwitch
-            checked={darkSide}
-            onChange={toggleDarkMode}
-            size={35}
-          />
-        </div>
+        checked={darkSide}
+        onChange={toggleDarkMode}
+        size={35}
+      />
     );
 }

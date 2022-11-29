@@ -29,19 +29,19 @@ export default function NavBar() {
 
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
       
-        <a href="#" className="flex items-center text-dark-blue hover:text-light-blue font-semibold duration-150 ease-in-out dark:text-light-gray dark:hover:text-hyper-light-blue">
+        <a href="#inicio" className="flex items-center text-dark-blue hover:text-light-blue font-semibold duration-150 ease-in-out dark:text-light-gray dark:hover:text-hyper-light-blue">
             {t("nav.home")}
         </a>
-        <a href="#" className="flex items-center text-dark-blue hover:text-light-blue font-semibold duration-150 ease-in-out dark:text-light-gray dark:hover:text-hyper-light-blue">
+        <a href="#About" className="flex items-center text-dark-blue hover:text-light-blue font-semibold duration-150 ease-in-out dark:text-light-gray dark:hover:text-hyper-light-blue">
             {t("nav.about")} 
         </a>     
-        <a href="#" className="flex items-center text-dark-blue hover:text-light-blue font-semibold duration-150 ease-in-out dark:text-light-gray dark:hover:text-hyper-light-blue">
+        <a href="#skills" className="flex items-center text-dark-blue hover:text-light-blue font-semibold duration-150 ease-in-out dark:text-light-gray dark:hover:text-hyper-light-blue">
             {t("nav.skills")}
         </a>
-        <a href="#" className="flex items-center text-dark-blue hover:text-light-blue font-semibold duration-150 ease-in-out dark:text-light-gray dark:hover:text-hyper-light-blue">
+        <a href="#proyectos" className="flex items-center text-dark-blue hover:text-light-blue font-semibold duration-150 ease-in-out dark:text-light-gray dark:hover:text-hyper-light-blue">
             {t("nav.projects")}
         </a>
-        <a href="#" className="flex items-center text-dark-blue hover:text-light-blue font-semibold duration-150 ease-in-out dark:text-light-gray dark:hover:text-hyper-light-blue">
+        <a href="#contacts" className="flex items-center text-dark-blue hover:text-light-blue font-semibold duration-150 ease-in-out dark:text-light-gray dark:hover:text-hyper-light-blue">
             {t("nav.contacts")}
         </a>
         
@@ -49,13 +49,13 @@ export default function NavBar() {
   );
  
   return (
-    <Navbar className="mx-auto w-10/12 py-2 px-4 lg:px-8 lg:py-4 shadow-none">
+    <Navbar className="mx-auto md:w-10/12 py-2 px-4 lg:px-8 lg:py-4 shadow-none dark:bg-hyper-dark-blue border-none">
       <div className="container mx-auto flex items-center justify-between text-blue-gray-900">
         <div className='text-5xl font-bold text-dark-blue font-roboto dark:text-light-gray before:content-["</"] after:content-[">"] '>
             NGB 
         </div>
         <div className="hidden lg:block">{navList}</div>
-        <div className="flex">
+        <div className="hidden lg:flex">
             <div className='flex  items-start mx-4'>
                 <Tooltip content="English" >
                     <button className='text-light-blue font-poppins font-semibold  dark:text-light-gray flex items-center'
@@ -87,7 +87,7 @@ export default function NavBar() {
         </div>
         <IconButton
           variant="text"
-          className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
+          className="ml-auto dark:text-light-gray text-dark-blue h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
           ripple={false}
           onClick={() => setOpenNav(!openNav)}
         >
@@ -125,9 +125,14 @@ export default function NavBar() {
       </div>
       <MobileNav open={openNav}>
         {navList}
-        <Button variant="gradient" size="sm" fullWidth className="mb-2">
-          <span>Buy Now</span>
-        </Button>
+        <div className="flex justify-between">
+          <Button variant="gradient" size="sm"  className="bg-amber-500 w-full rounded-full" onClick={() => i18n.changeLanguage("es")}>
+            <span>Español</span>
+          </Button>
+          <Button variant="gradient" size="sm"  className="bg-teal-800 w-full rounded-full" onClick={() => i18n.changeLanguage("en")}>
+            <span>Ingles</span>
+          </Button>
+        </div>
       </MobileNav>
       
     </Navbar>

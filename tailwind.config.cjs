@@ -5,6 +5,9 @@ module.exports = withMT({
   darkMode: 'class',
   content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
+     screens: {
+      'col': '950px',
+     },
      colors: {
       'dark-blue' : '#2C3E50',
       'light-blue' : '#3498DB',
