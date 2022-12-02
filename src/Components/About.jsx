@@ -6,7 +6,7 @@ export const About = () => {
   const [t, i18n] = useTranslation("global");
 
   return (
-    <section id='About' >
+    <section id='About' className='pt-20'>
         <div className='md:w-10/12 w-[100vw] m-auto flex flex-col  col:flex-row justify-between '>
           <div className='lg:w-[50%] mx-6 md:mx-0'>
             <h3 className='text-4xl font-bold text-dark-blue dark:text-light-gray ' > {t("about.me")} </h3>

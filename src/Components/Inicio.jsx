@@ -8,7 +8,7 @@ export const Inicio = () => {
   const [t, i18n] = useTranslation("global");
 
   return (
-    <section className=' bg-slate-900 w-10/12  h-[92vh] m-auto before:c dark:bg-hyper-dark-blue' id='inicio'>
+    <section className=' bg-slate-900 w-10/12  h-screen pt-20 m-auto before:c dark:bg-hyper-dark-blue' id='inicio'>
       <div className='flex flex-row-reverse md:hidden w-[89vw] '>
         <Dark/>
       </div>

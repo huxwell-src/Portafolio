@@ -25,7 +25,7 @@ export const Skills = () => {
   const [t, i18n] = useTranslation("global");
 
   return (
-    <section id='skills' className='my-10'>
+    <section id='skills' className='mb-10 pt-20'>
         <div className='md:w-10/12 w-[100vw] m-auto flex flex-col  sm:flex-row justify-between '>
             <div className='lg:w-[50%]'> 
               <h2 className='tittle ml-6'>{t("skills.skills")}</h2>
