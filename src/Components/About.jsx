@@ -1,7 +1,7 @@
 import React from 'react'
 import {useTranslation} from "react-i18next"
 
-const About = () => {
+export const About = () => {
 
   const [t, i18n] = useTranslation("global");
 
@@ -54,4 +54,3 @@ const About = () => {
   )
 }
 
-export default About

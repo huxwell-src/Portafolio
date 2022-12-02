@@ -5,7 +5,7 @@ import data from '../data/data'
 import {useTranslation} from "react-i18next";
 
 
-const Skills = () => {
+export const Skills = () => {
   
   const allCategories = ['All', ...new Set(data.map(logo => logo.category ))]
 
@@ -40,5 +40,3 @@ const Skills = () => {
     </section>
   )
 }
-
-export default Skills

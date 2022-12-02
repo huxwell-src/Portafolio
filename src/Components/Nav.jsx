@@ -11,7 +11,7 @@ import Dark from './Dark'
 import BurgerButton from './BurgerButton'
 import {useTranslation} from "react-i18next"
  
-export default function NavBar() {
+export function NavBar() {
   const [openNav, setOpenNav] = useState(false);
  
   useEffect(() => {

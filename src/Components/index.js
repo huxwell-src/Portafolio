@@ -1,2 +1,7 @@
 export * from './LogoList'
 export * from './ButtonList'
+export * from './Contact'
+export * from './Skills'
+export * from './About'
+export * from './Inicio'
+export * from './Nav'

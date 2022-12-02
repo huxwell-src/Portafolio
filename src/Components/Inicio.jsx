@@ -3,7 +3,7 @@ import './css/inicio.css';
 import {useTranslation} from "react-i18next";
 import Dark from './Dark'
 
-const Inicio = () => {
+export const Inicio = () => {
 
   const [t, i18n] = useTranslation("global");
 
@@ -107,5 +107,4 @@ const Inicio = () => {
   )
 }
 
-export default Inicio
 
