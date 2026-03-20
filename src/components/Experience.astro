@@ -1,0 +1,263 @@
+---
+// Experience.astro — Timeline vertical editorial de experiencia laboral
+
+const items = [
+  {
+    id: 'exp1',
+    company: 'Microsystem',
+    roleEs: 'Desarrollador Backend Python/Django',
+    roleEn: 'Backend Python/Django Developer',
+    period: 'Jun 2024 – Nov 2025',
+    city: 'Santiago, Chile',
+    bulletsEs: [
+      'Desarrollo de módulos backend con Python y Django',
+      'Integraciones bidireccionales SAP ↔ Salesforce via APIs REST',
+      'Control de sincronización, gestión de logs y prevención de duplicidades',
+      'Automatización de procesos internos y documentación técnica',
+    ],
+    bulletsEn: [
+      'Backend module development with Python and Django',
+      'Bidirectional SAP ↔ Salesforce integrations via REST APIs',
+      'Sync control, log management, error handling, and duplicate prevention',
+      'Internal process automation and technical documentation',
+    ],
+  },
+  {
+    id: 'exp2',
+    company: 'Latam Airlines',
+    roleEs: 'Practicante — Desarrollo Servicio A Bordo',
+    roleEn: 'Intern — On-Board Service Development',
+    period: 'May 2023 – Nov 2023',
+    city: 'Santiago, Chile',
+    bulletsEs: [
+      'Desarrollo de aplicación interna con AppSheet, SQL y Apps Script',
+      'Centralización de datos de múltiples áreas con modelado y normalización',
+      'Creación de dashboards y automatización de consultas operativas',
+    ],
+    bulletsEn: [
+      'Internal app development with AppSheet, SQL, and Apps Script',
+      'Data centralization across multiple areas with modeling and normalization',
+      'Dashboard creation and automation of operational queries',
+    ],
+  },
+  {
+    id: 'exp3',
+    company: 'Taller Digital',
+    roleEs: 'Practicante — Desarrollo Front End',
+    roleEn: 'Intern — Front End Development',
+    period: 'Abr 2022 – Jun 2022',
+    city: 'Santiago, Chile',
+    bulletsEs: [
+      'Construcción de módulos y plantillas WordPress con HTML, CSS, JS y PHP',
+      'Optimización visual y de carga con criterios UI/UX',
+      'Trabajo directo con equipo de diseño y UX',
+    ],
+    bulletsEn: [
+      'WordPress module and template development with HTML, CSS, JS, and PHP',
+      'Visual and load optimization with UI/UX criteria',
+      'Direct collaboration with design and UX team',
+    ],
+  },
+  {
+    id: 'exp4',
+    company: 'DuocUC',
+    roleEs: 'Proyecto de Título',
+    roleEn: 'Final Year Project',
+    period: '2023',
+    city: 'Santiago, Chile',
+    bulletsEs: [
+      'Sistema Web Integrado: API REST Django + React + MySQL',
+      'Diseño de base de datos relacional y frontend por componentes',
+      'Arquitectura cliente-servidor completa',
+    ],
+    bulletsEn: [
+      'Integrated Web System: Django REST API + React + MySQL',
+      'Relational database design and component-based frontend',
+      'Complete client-server architecture',
+    ],
+  },
+];
+---
+
+<section id="experience" class="section">
+  <div class="section-header reveal">
+    <p class="section-label">03 — <span data-exp-label="subtitle">Carrera profesional</span></p>
+    <h2 class="section-title" data-exp-label="title">Experiencia</h2>
+  </div>
+
+  <div class="timeline">
+    {items.map((item, i) => (
+      <article class={`timeline-item reveal reveal-delay-${i + 1}`} data-exp-id={item.id}>
+        {/* Decorative dot on the line */}
+        <div class="timeline-dot" aria-hidden="true"></div>
+
+        <div class="timeline-content">
+          {/* Meta row */}
+          <div class="exp-meta">
+            <span class="exp-period mono muted">{item.period}</span>
+            <span class="exp-city mono muted">{item.city}</span>
+          </div>
+
+          {/* Company */}
+          <p class="exp-company">{item.company}</p>
+
+          {/* Role */}
+          <h3 class="exp-role" data-exp-role={item.id}>{item.roleEs}</h3>
+
+          {/* Bullets */}
+          <ul class="exp-bullets" data-exp-bullets={item.id}>
+            {item.bulletsEs.map(b => (
+              <li>{b}</li>
+            ))}
+          </ul>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+
+<script>
+  const expLabels: Record<string, Record<string, string>> = {
+    es: { title: 'Experiencia', subtitle: 'Carrera profesional' },
+    en: { title: 'Experience', subtitle: 'Professional career' },
+  };
+
+  const expData: Record<string, Record<string, { role: string; bullets: string[] }>> = {
+    es: {
+      exp1: { role: 'Desarrollador Backend Python/Django', bullets: ['Desarrollo de módulos backend con Python y Django','Integraciones bidireccionales SAP ↔ Salesforce via APIs REST','Control de sincronización, gestión de logs y prevención de duplicidades','Automatización de procesos internos y documentación técnica'] },
+      exp2: { role: 'Practicante — Desarrollo Servicio A Bordo', bullets: ['Desarrollo de aplicación interna con AppSheet, SQL y Apps Script','Centralización de datos de múltiples áreas con modelado y normalización','Creación de dashboards y automatización de consultas operativas'] },
+      exp3: { role: 'Practicante — Desarrollo Front End', bullets: ['Construcción de módulos y plantillas WordPress con HTML, CSS, JS y PHP','Optimización visual y de carga con criterios UI/UX','Trabajo directo con equipo de diseño y UX'] },
+      exp4: { role: 'Proyecto de Título', bullets: ['Sistema Web Integrado: API REST Django + React + MySQL','Diseño de base de datos relacional y frontend por componentes','Arquitectura cliente-servidor completa'] },
+    },
+    en: {
+      exp1: { role: 'Backend Python/Django Developer', bullets: ['Backend module development with Python and Django','Bidirectional SAP ↔ Salesforce integrations via REST APIs','Sync control, log management, error handling, and duplicate prevention','Internal process automation and technical documentation'] },
+      exp2: { role: 'Intern — On-Board Service Development', bullets: ['Internal app development with AppSheet, SQL, and Apps Script','Data centralization across multiple areas with modeling and normalization','Dashboard creation and automation of operational queries'] },
+      exp3: { role: 'Intern — Front End Development', bullets: ['WordPress module and template development with HTML, CSS, JS, and PHP','Visual and load optimization with UI/UX criteria','Direct collaboration with design and UX team'] },
+      exp4: { role: 'Final Year Project', bullets: ['Integrated Web System: Django REST API + React + MySQL','Relational database design and component-based frontend','Complete client-server architecture'] },
+    },
+  };
+
+  window.addEventListener('langChange', (e: any) => {
+    const { lang } = e.detail;
+    const labels = expLabels[lang];
+    document.querySelectorAll('[data-exp-label]').forEach(el => {
+      const k = el.getAttribute('data-exp-label')!;
+      (el as HTMLElement).textContent = labels[k];
+    });
+    ['exp1','exp2','exp3','exp4'].forEach(id => {
+      const d = expData[lang]?.[id];
+      if (!d) return;
+      const roleEl = document.querySelector(`[data-exp-role="${id}"]`);
+      if (roleEl) (roleEl as HTMLElement).textContent = d.role;
+      const bulletsEl = document.querySelector(`[data-exp-bullets="${id}"]`);
+      if (bulletsEl) {
+        bulletsEl.innerHTML = d.bullets.map(b => `<li>${b}</li>`).join('');
+      }
+    });
+  });
+</script>
+
+<style>
+  .timeline {
+    position: relative;
+    padding-left: 2rem;
+  }
+
+  /* Vertical decorative line */
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+    opacity: 0.4;
+  }
+
+  .timeline-item {
+    position: relative;
+    padding: 0 0 var(--space-2xl) var(--space-lg);
+  }
+
+  .timeline-item:last-child {
+    padding-bottom: 0;
+  }
+
+  /* Dot on the timeline */
+  .timeline-dot {
+    position: absolute;
+    left: -4px;
+    top: 8px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--accent);
+    transition: background 0.2s;
+  }
+
+  .timeline-item:hover .timeline-dot {
+    background: var(--accent);
+  }
+
+  /* Meta row */
+  .exp-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    margin-bottom: var(--space-xs);
+    font-size: var(--text-xs);
+    letter-spacing: 0.1em;
+  }
+
+  /* Company name */
+  .exp-company {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: var(--space-xs);
+  }
+
+  /* Role */
+  .exp-role {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: var(--space-md);
+  }
+
+  /* Bullets */
+  .exp-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .exp-bullets li {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+    padding-left: 1.2em;
+    position: relative;
+    line-height: 1.7;
+  }
+
+  .exp-bullets li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.75em;
+    top: 0.15em;
+  }
+
+  @media (max-width: 768px) {
+    .timeline { padding-left: var(--space-md); }
+    .timeline-item { padding-left: var(--space-md); }
+  }
+</style>

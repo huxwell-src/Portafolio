@@ -1,0 +1,841 @@
+---
+// Projects.astro — 3 project cards con stack, categoría, status y botones
+
+// Colores de acento por categoría
+const categoryAccent: Record<string, string> = {
+  backend: "var(--accent-1)",
+  frontend: "var(--accent-3)",
+  data: "var(--accent-2)",
+};
+
+const projects = [
+  {
+    id: "p1",
+    titleEs: "API de Gestión de Inventario",
+    titleEn: "Inventory Management API",
+    descEs:
+      "API REST con autenticación JWT, CRUD completo, validaciones y documentación con Swagger. Diseñada para integrarse con sistemas externos.",
+    descEn:
+      "REST API with JWT authentication, full CRUD, validations and Swagger documentation. Designed to integrate with external systems.",
+    stack: ["Python", "Django", "REST Framework", "MySQL", "JWT"],
+    category: "backend",
+    categoryLabelEs: "Backend",
+    categoryLabelEn: "Backend",
+    status: "dev",
+    statusLabelEs: "En desarrollo",
+    statusLabelEn: "In progress",
+  },
+  {
+    id: "p2",
+    titleEs: "Dashboard de Seguimiento Personal",
+    titleEn: "Personal Tracking Dashboard",
+    descEs:
+      "Aplicación web para visualizar métricas personales con consumo de API propia, diseño responsivo y modo oscuro.",
+    descEn:
+      "Web app to visualize personal metrics consuming a custom API, with responsive design and dark mode.",
+    stack: ["React", "Tailwind CSS", "Node.js", "Chart.js"],
+    category: "frontend",
+    categoryLabelEs: "Frontend",
+    categoryLabelEn: "Frontend",
+    status: "dev",
+    statusLabelEs: "En desarrollo",
+    statusLabelEn: "In progress",
+  },
+  {
+    id: "p3",
+    titleEs: "Análisis de Datos Operacionales",
+    titleEn: "Operational Data Analysis",
+    descEs:
+      "Pipeline de extracción y transformación de datos operacionales con visualización en dashboard interactivo para toma de decisiones.",
+    descEn:
+      "Extraction and transformation pipeline for operational data with an interactive dashboard for decision-making.",
+    stack: ["Python", "Pandas", "Power BI", "SQL Server"],
+    category: "data",
+    categoryLabelEs: "Data Analytics",
+    categoryLabelEn: "Data Analytics",
+    status: "done",
+    statusLabelEs: "Completado",
+    statusLabelEn: "Completed",
+  },
+];
+---
+
+<section id="projects" class="section">
+  <div class="section-header reveal">
+    <p class="section-label">
+      02 — <span data-proj-label="subtitle">Trabajo seleccionado</span>
+    </p>
+    <h2 class="section-title" data-proj-label="title">Proyectos</h2>
+  </div>
+
+  <div class="projects-grid">
+    {
+      projects.map((p, i) => (
+        <article
+          class={`project-card reveal reveal-delay-${i + 1}`}
+          data-project-id={p.id}
+          style={`--cat-color: ${categoryAccent[p.category]}`}
+          tabindex="0"
+          role="button"
+          aria-label={`Ver detalles`}
+        >
+          {/* Category tag */}
+          <div class="card-top">
+            <span class="category-tag" data-proj-cat={p.id}>
+              {p.categoryLabelEs}
+            </span>
+            <span
+              class={`status-badge status-${p.status}`}
+              data-proj-status={p.id}
+            >
+              {p.status === "dev" ? p.statusLabelEs : p.statusLabelEs}
+            </span>
+          </div>
+
+          {/* Title */}
+          <h3 class="card-title" data-proj-title={p.id}>
+            {p.titleEs}
+          </h3>
+
+          {/* Description */}
+          <p class="card-desc" data-proj-desc={p.id}>
+            {p.descEs}
+          </p>
+
+          {/* Stack badges */}
+          <div class="stack-list">
+            {p.stack.map((tech) => (
+              <span class="badge">{tech}</span>
+            ))}
+          </div>
+
+          {/* Buttons */}
+          <div class="card-actions">
+            <button
+              class="btn btn-ghost"
+              disabled
+              title="Próximamente / Coming soon"
+              aria-label="GitHub — próximamente"
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+              </svg>
+              <span data-proj-btn="github">GitHub</span>
+            </button>
+
+            <button
+              class="btn btn-accent"
+              disabled
+              title="Próximamente / Coming soon"
+              aria-label="Demo — próximamente"
+            >
+              <span data-proj-btn="demo">Ver demo</span>
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <>
+                  <path d="M7 7h10v10" />
+                  <path d="M7 17 17 7" />
+                </>
+              </svg>
+            </button>
+          </div>
+
+          {/* Accent border bottom line */}
+          <div class="card-accent-line" aria-hidden="true" />
+        </article>
+      ))
+    }
+  </div>
+
+  {/* Project Modal Overlay & Dialog */}
+  <div id="modal-overlay" class="modal-overlay"></div>
+  <dialog id="project-modal" class="project-modal">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Cerrar modal">
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          ><line x1="18" y1="6" x2="6" y2="18"></line><line
+            x1="6"
+            y1="6"
+            x2="18"
+            y2="18"></line></svg
+        >
+      </button>
+
+      <div class="modal-header">
+        <span class="category-tag" id="modal-cat"></span>
+        <h3 class="modal-title" id="modal-title"></h3>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-image-placeholder">
+          <div class="modal-art"></div>
+        </div>
+
+        <div class="modal-info">
+          <p class="modal-desc" id="modal-long-desc"></p>
+
+          <div class="modal-features-section">
+            <h4 class="modal-subtitle" id="modal-features-title">
+              Características Clave
+            </h4>
+            <ul class="modal-features" id="modal-features"></ul>
+          </div>
+          <div class="modal-actions card-actions" id="modal-actions"></div>
+          <div class="modal-stack" id="modal-stack"></div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+</section>
+
+<script>
+  let currentLang = "es";
+  if (typeof localStorage !== "undefined" && localStorage.getItem("nsb_lang")) {
+    currentLang = localStorage.getItem("nsb_lang")!;
+  }
+
+  // i18n project texts
+  const projectData: Record<string, Record<string, any>> = {
+    es: {
+      section: { title: "Proyectos", subtitle: "Trabajo seleccionado" },
+      p1: {
+        title: "API de Gestión de Inventario",
+        desc: "API REST con autenticación JWT, CRUD completo, validaciones y documentación con Swagger. Diseñada para integrarse con sistemas externos.",
+        cat: "Backend",
+        status: "En desarrollo",
+        github: "GitHub",
+        demo: "Ver demo",
+        longDesc:
+          "Una API REST robusta construida con Django REST Framework para la gestión integral de inventarios. Soporta múltiples sucursales, control de stock en tiempo real y generación de reportes automáticos. Diseñada bajo principios de arquitectura limpia.",
+        features: [
+          "Autenticación basada en JWT.",
+          "Filtros avanzados y paginación.",
+          "Documentación interactiva con Swagger/OpenAPI.",
+          "Modelo de relaciones complejas en SQL.",
+        ],
+      },
+      p2: {
+        title: "Dashboard de Seguimiento Personal",
+        desc: "Aplicación web para visualizar métricas personales con consumo de API propia, diseño responsivo y modo oscuro.",
+        cat: "Frontend",
+        status: "En desarrollo",
+        github: "GitHub",
+        demo: "Ver demo",
+        longDesc:
+          "Plataforma frontend construida como SPA (Single Page App) para graficar métricas, hábitos y objetivos personales. Enfocada fuertemente en una UX ágil y estética minimalista.",
+        features: [
+          "Gráficos interactivos dinámicos con Chart.js.",
+          "Gestión global de estado mediante React hooks.",
+          'Diseño responsivo "mobile-first" con Tailwind.',
+          "Soporte nativo para modo oscuro y claro.",
+        ],
+      },
+      p3: {
+        title: "Análisis de Datos Operacionales",
+        desc: "Pipeline de extracción y transformación de datos operacionales con visualización en dashboard interactivo para toma de decisiones.",
+        cat: "Data Analytics",
+        status: "Completado",
+        github: "GitHub",
+        demo: "Ver demo",
+        longDesc:
+          "Proyecto integral de Business Intelligence que involucra la creación de un pipeline ETL (Extract, Transform, Load) para procesar millones de registros crudos y consolidarlos en un modelo analítico de visualización.",
+        features: [
+          "Scripts ETL automatizados y resilientes con Pandas.",
+          "Creación de un modelo de datos estrella (Star Schema).",
+          "Manipulación e ingesta desde SQL Server.",
+          "Dashboard en Power BI con drill-down interactivo.",
+        ],
+      },
+    },
+    en: {
+      section: { title: "Projects", subtitle: "Selected work" },
+      p1: {
+        title: "Inventory Management API",
+        desc: "REST API with JWT authentication, full CRUD, validations and Swagger documentation. Designed to integrate with external systems.",
+        cat: "Backend",
+        status: "In progress",
+        github: "GitHub",
+        demo: "Live demo",
+        longDesc:
+          "A robust REST API built with Django REST Framework for comprehensive inventory control. Features multi-branch support, real-time stock tracking, and clean architecture principles.",
+        features: [
+          "JWT based authentication.",
+          "Advanced filtering and pagination.",
+          "Interactive Swagger/OpenAPI documentation.",
+          "Complex SQL relational modeling.",
+        ],
+      },
+      p2: {
+        title: "Personal Tracking Dashboard",
+        desc: "Web app to visualize personal metrics consuming a custom API, with responsive design and dark mode.",
+        cat: "Frontend",
+        status: "In progress",
+        github: "GitHub",
+        demo: "Live demo",
+        longDesc:
+          "Frontend platform (SPA) that consumes custom API data to chart personal metrics and habits over time. Strongly focused on a smooth UX and minimalist design.",
+        features: [
+          "Interactive and dynamic Chart.js graphing.",
+          "Global state management with React hooks.",
+          "Mobile-first responsive Tailwind design.",
+          "Native light and dark mode support.",
+        ],
+      },
+      p3: {
+        title: "Operational Data Analysis",
+        desc: "Extraction and transformation pipeline for operational data with an interactive dashboard for decision-making.",
+        cat: "Data Analytics",
+        status: "Completed",
+        github: "GitHub",
+        demo: "Live demo",
+        longDesc:
+          "Comprehensive Business Intelligence project involving an ETL (Extract, Transform, Load) pipeline to process raw logs and consolidate them into an analytical model exposed via dashboards.",
+        features: [
+          "Automated and resilient Pandas ETL scripts.",
+          "Creation of an optimized Star Schema model.",
+          "Data manipulation within SQL Server.",
+          "Interactive Power BI drill-down dashboards.",
+        ],
+      },
+    },
+  };
+
+  const modal = document.getElementById("project-modal") as HTMLDialogElement;
+  const overlay = document.getElementById("modal-overlay");
+
+  window.addEventListener("langChange", (e: any) => {
+    const { lang } = e.detail;
+    const d = projectData[lang];
+    if (!d) return;
+    document.querySelectorAll("[data-proj-label]").forEach((el) => {
+      const k = el.getAttribute("data-proj-label")!;
+      (el as HTMLElement).textContent =
+        d.section[k] ?? (el as HTMLElement).textContent;
+    });
+    ["p1", "p2", "p3"].forEach((id) => {
+      const titleEl = document.querySelector(`[data-proj-title="${id}"]`);
+      const descEl = document.querySelector(`[data-proj-desc="${id}"]`);
+      const catEl = document.querySelector(`[data-proj-cat="${id}"]`);
+      const statusEl = document.querySelector(`[data-proj-status="${id}"]`);
+      if (titleEl) (titleEl as HTMLElement).textContent = d[id].title;
+      if (descEl) (descEl as HTMLElement).textContent = d[id].desc;
+      if (catEl) (catEl as HTMLElement).textContent = d[id].cat;
+      if (statusEl) (statusEl as HTMLElement).textContent = d[id].status;
+      document.querySelectorAll('[data-proj-btn="github"]').forEach((el) => {
+        (el as HTMLElement).textContent = d[id].github;
+      });
+      document.querySelectorAll('[data-proj-btn="demo"]').forEach((el) => {
+        (el as HTMLElement).textContent = d[id].demo;
+      });
+    });
+
+    if (modal?.classList.contains("open")) {
+      const currentId = modal.getAttribute("data-active-id");
+      if (currentId && d[currentId]) {
+        document.getElementById("modal-title")!.textContent =
+          d[currentId].title;
+        document.getElementById("modal-cat")!.textContent = d[currentId].cat;
+        document.getElementById("modal-long-desc")!.textContent =
+          d[currentId].longDesc;
+        document.getElementById("modal-features-title")!.textContent =
+          currentLang === "es" ? "Características Clave" : "Key Features";
+        const featuresUl = document.getElementById("modal-features")!;
+        featuresUl.innerHTML = "";
+        d[currentId].features.forEach((f: string) => {
+          const li = document.createElement("li");
+          li.textContent = f;
+          featuresUl.appendChild(li);
+        });
+      }
+    }
+  });
+
+  // Modal interactions
+  const closeBtn = modal?.querySelector(".modal-close");
+
+  document.querySelectorAll(".project-card").forEach((card) => {
+    card.addEventListener("keydown", (e: Event) => {
+      const kbEvent = e as KeyboardEvent;
+      if (kbEvent.key === "Enter" || kbEvent.key === " ") {
+        e.preventDefault();
+        (card as HTMLElement).click();
+      }
+    });
+
+    card.addEventListener("click", (e) => {
+      // Ignore click if it was on a button or link
+      if (
+        (e.target as HTMLElement).closest("button") ||
+        (e.target as HTMLElement).closest("a")
+      )
+        return;
+
+      const id = card.getAttribute("data-project-id");
+      if (!id || !modal) return;
+
+      const d = projectData[currentLang]?.[id];
+      if (!d) return;
+
+      modal.setAttribute("data-active-id", id);
+      document.getElementById("modal-title")!.textContent = d.title;
+      document.getElementById("modal-cat")!.textContent = d.cat;
+      document.getElementById("modal-long-desc")!.textContent = d.longDesc;
+      document.getElementById("modal-features-title")!.textContent =
+        currentLang === "es" ? "Características Clave" : "Key Features";
+
+      const featuresUl = document.getElementById("modal-features")!;
+      featuresUl.innerHTML = "";
+      d.features.forEach((f: string) => {
+        const li = document.createElement("li");
+        li.textContent = f;
+        featuresUl.appendChild(li);
+      });
+
+      // Clone stack
+      const cardStack = card.querySelector(".stack-list");
+      const modalStack = document.getElementById("modal-stack")!;
+      if (cardStack) {
+        modalStack.innerHTML = cardStack.innerHTML;
+      }
+
+      // Clone actions
+      const cardActions = card.querySelector(".card-actions");
+      const modalActions = document.getElementById("modal-actions");
+      if (cardActions && modalActions) {
+        modalActions.innerHTML = cardActions.innerHTML;
+      }
+
+      // Setup dynamic color
+      const color = (card as HTMLElement).style.getPropertyValue("--cat-color");
+      modal.style.setProperty("--modal-accent", color);
+
+      modal.setAttribute("open", "");
+      modal.classList.add("open");
+      overlay?.classList.add("open");
+      document.body.style.overflow = "hidden";
+    });
+  });
+
+  const closeModal = () => {
+    modal?.classList.remove("open");
+    modal?.removeAttribute("open");
+    overlay?.classList.remove("open");
+    document.body.style.overflow = "";
+  };
+
+  closeBtn?.addEventListener("click", closeModal);
+  overlay?.addEventListener("click", closeModal);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal?.classList.contains("open")) closeModal();
+  });
+</script>
+
+<style>
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .project-card {
+    position: relative;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    transition:
+      transform 0.25s var(--ease),
+      box-shadow 0.25s var(--ease),
+      border-color 0.25s;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .project-card:focus-visible {
+    outline: 2px solid var(--cat-color);
+    outline-offset: 4px;
+  }
+
+  .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: color-mix(in srgb, var(--cat-color) 40%, transparent);
+  }
+
+  .project-card:hover .card-accent-line {
+    width: 100%;
+  }
+
+  /* Top row */
+  .card-top {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    justify-content: space-between;
+  }
+
+  .category-tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--cat-color) 80%, var(--text));
+    border: 1px solid color-mix(in srgb, var(--cat-color) 30%, transparent);
+    background: color-mix(in srgb, var(--cat-color) 8%, transparent);
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+  }
+
+  .status-badge {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+    color: var(--text-muted);
+  }
+
+  .status-badge.status-dev {
+    background: color-mix(in srgb, var(--accent-4) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--accent-4) 25%, transparent);
+    color: color-mix(in srgb, var(--accent-4) 80%, var(--text));
+  }
+
+  .status-badge.status-done {
+    background: color-mix(in srgb, var(--accent-1) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--accent-1) 25%, transparent);
+    color: color-mix(in srgb, var(--accent-1) 80%, var(--text));
+  }
+
+  /* Title */
+  .card-title {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--text);
+  }
+
+  /* Description */
+  .card-desc {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    line-height: 1.75;
+    color: var(--text-muted);
+    flex: 1;
+  }
+
+  /* Stack */
+  .stack-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  /* Buttons */
+  .card-actions {
+    display: flex;
+    gap: var(--space-sm);
+    margin-top: auto;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.06em;
+    border: 1px solid var(--border);
+    transition: all 0.2s;
+  }
+
+  .btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text-muted);
+  }
+
+  .btn-ghost:not(:disabled):hover {
+    border-color: var(--text);
+    color: var(--text);
+  }
+
+  .btn-accent {
+    background: color-mix(in srgb, var(--cat-color) 12%, transparent);
+    border-color: color-mix(in srgb, var(--cat-color) 35%, transparent);
+    color: color-mix(in srgb, var(--cat-color) 80%, var(--text));
+  }
+
+  .btn-accent:not(:disabled):hover {
+    background: color-mix(in srgb, var(--cat-color) 20%, transparent);
+  }
+
+  /* Accent bottom line */
+  .card-accent-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--cat-color);
+    transition: width 0.4s var(--ease);
+  }
+
+  @media (max-width: 768px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* --- Modal Styles --- */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    z-index: 9989;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .modal-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .project-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.98);
+    margin: 0;
+    width: min(92%, 800px);
+    max-height: 90vh;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--bg);
+    padding: 0;
+    color: var(--text);
+    box-shadow: var(--shadow-xl);
+    z-index: 9990;
+    opacity: 0;
+  }
+
+  .project-modal.open {
+    display: block;
+    animation: modal-fade-scale 0.4s var(--ease) forwards;
+  }
+
+  @keyframes modal-fade-scale {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -40%) scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+
+  .modal-content {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: var(--space-md);
+    right: var(--space-md);
+    background: color-mix(in srgb, var(--bg) 80%, transparent);
+    backdrop-filter: blur(4px);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.2s;
+  }
+
+  .modal-close:hover {
+    color: var(--text);
+    border-color: var(--text);
+    transform: rotate(90deg);
+  }
+
+  .modal-header {
+    padding: var(--space-xl) var(--space-xl) var(--space-md);
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--modal-accent, var(--text)) 5%, transparent),
+      transparent
+    );
+  }
+
+  .modal-title {
+    font-family: var(--font-display);
+    font-size: var(--text-3xl);
+    line-height: 1.1;
+    margin-top: var(--space-sm);
+  }
+
+  .modal-body {
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+  }
+
+  .modal-image-placeholder {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius-md);
+    background: var(--border);
+    overflow: hidden;
+    position: relative;
+    border: 1px solid color-mix(in srgb, var(--modal-accent) 20%, var(--border));
+  }
+
+  .modal-art {
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+      45deg,
+      color-mix(in srgb, var(--modal-accent, #fff) 10%, transparent) 0%,
+      color-mix(in srgb, var(--modal-accent, #fff) 10%, transparent) 10px,
+      transparent 10px,
+      transparent 20px
+    );
+    opacity: 0.5;
+  }
+
+  .modal-art::after {
+    content: "</>";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 3rem;
+    color: color-mix(in srgb, var(--modal-accent, #fff) 50%, var(--text));
+    opacity: 0.3;
+  }
+
+  .modal-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .modal-desc {
+    font-family: var(--font-mono);
+    line-height: 1.8;
+    color: var(--text);
+    font-size: var(--text-base);
+  }
+
+  .modal-features-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .modal-subtitle {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--modal-accent, var(--text));
+  }
+
+  .modal-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .modal-features li {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.6;
+  }
+
+  .modal-features li::before {
+    content: "→";
+    color: var(--modal-accent, var(--text));
+    margin-top: 2px;
+  }
+
+  .modal-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-top: var(--space-md);
+    border-top: 1px dashed var(--border);
+  }
+
+  .modal-stack .badge {
+    background: color-mix(in srgb, var(--modal-accent) 15%, transparent);
+    border-color: color-mix(in srgb, var(--modal-accent) 30%, transparent);
+    color: color-mix(in srgb, var(--modal-accent) 80%, var(--text));
+  }
+
+  .modal-actions {
+    margin-top: 0;
+    margin-bottom: var(--space-sm);
+  }
+</style>

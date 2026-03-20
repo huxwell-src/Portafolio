@@ -1,0 +1,135 @@
+---
+// Certifications.astro — Grid compacto de certificaciones, destacando Azure DP-900
+
+const certs = [
+  { titleEs: 'Azure Data Fundamentals DP-900', titleEn: 'Azure Data Fundamentals DP-900', issuer: 'Microsoft', highlight: true },
+  { titleEs: 'Certificado Internacional Nivel Intermedio', titleEn: 'International Certificate — Intermediate Level', issuer: 'DuocUC', highlight: false },
+  { titleEs: 'Análisis y Desarrollo de Modelos de Datos', titleEn: 'Data Model Analysis and Development', issuer: 'DuocUC', highlight: false },
+  { titleEs: 'Programación de Software', titleEn: 'Software Programming', issuer: 'DuocUC', highlight: false },
+  { titleEs: 'Inteligencia de Negocios', titleEn: 'Business Intelligence', issuer: 'DuocUC', highlight: false },
+  { titleEs: 'Arquitectura de Software', titleEn: 'Software Architecture', issuer: 'DuocUC', highlight: false },
+  { titleEs: 'Gestión de Proyectos Informáticos', titleEn: 'IT Project Management', issuer: 'DuocUC', highlight: false },
+  { titleEs: 'Análisis y Planificación de Requerimientos Informáticos', titleEn: 'IT Requirements Analysis and Planning', issuer: 'DuocUC', highlight: false },
+  { titleEs: 'Calidad de Software', titleEn: 'Software Quality', issuer: 'DuocUC', highlight: false },
+];
+---
+
+<section id="certifications" class="section">
+  <div class="section-header reveal">
+    <p class="section-label">06 — <span data-cert-label="subtitle">Formación adicional</span></p>
+    <h2 class="section-title" data-cert-label="title">Certificaciones</h2>
+  </div>
+
+  <div class="cert-grid">
+    {certs.map((cert, i) => (
+      <div
+        class={`cert-item reveal reveal-delay-${Math.min(i + 1, 6)} ${cert.highlight ? 'cert-highlight' : ''}`}
+        data-cert-idx={i}
+      >
+        {cert.highlight && (
+          <span class="cert-star" aria-hidden="true">✦</span>
+        )}
+        <p class="cert-title" data-cert-title={i}>{cert.titleEs}</p>
+        <span class="cert-issuer mono muted">{cert.issuer}</span>
+      </div>
+    ))}
+  </div>
+</section>
+
+<script>
+  const certData = [
+    { es: 'Azure Data Fundamentals DP-900', en: 'Azure Data Fundamentals DP-900' },
+    { es: 'Certificado Internacional Nivel Intermedio', en: 'International Certificate — Intermediate Level' },
+    { es: 'Análisis y Desarrollo de Modelos de Datos', en: 'Data Model Analysis and Development' },
+    { es: 'Programación de Software', en: 'Software Programming' },
+    { es: 'Inteligencia de Negocios', en: 'Business Intelligence' },
+    { es: 'Arquitectura de Software', en: 'Software Architecture' },
+    { es: 'Gestión de Proyectos Informáticos', en: 'IT Project Management' },
+    { es: 'Análisis y Planificación de Requerimientos Informáticos', en: 'IT Requirements Analysis and Planning' },
+    { es: 'Calidad de Software', en: 'Software Quality' },
+  ];
+  const certSectionLabels: Record<string, Record<string,string>> = {
+    es: { title: 'Certificaciones', subtitle: 'Formación adicional' },
+    en: { title: 'Certifications', subtitle: 'Additional training' },
+  };
+
+  window.addEventListener('langChange', (e: any) => {
+    const { lang } = e.detail;
+    document.querySelectorAll('[data-cert-label]').forEach(el => {
+      (el as HTMLElement).textContent = certSectionLabels[lang][el.getAttribute('data-cert-label')!];
+    });
+    certData.forEach((c, i) => {
+      const el = document.querySelector(`[data-cert-title="${i}"]`);
+      if (el) (el as HTMLElement).textContent = lang === 'en' ? c.en : c.es;
+    });
+  });
+</script>
+
+<style>
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-sm);
+  }
+
+  .cert-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-sm);
+    padding: var(--space-md);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--bg);
+    transition: border-color 0.2s, background 0.2s;
+    position: relative;
+  }
+
+  .cert-item:hover {
+    border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+    background: var(--bg-alt);
+  }
+
+  /* Highlighted — Azure cert */
+  .cert-highlight {
+    border-color: color-mix(in srgb, var(--accent-3) 40%, transparent);
+    background: color-mix(in srgb, var(--accent-3) 4%, var(--bg));
+    grid-column: span 2;
+  }
+
+  .cert-highlight .cert-title {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .cert-star {
+    color: var(--accent-3);
+    font-size: 1rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .cert-content {
+    flex: 1;
+  }
+
+  .cert-title {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--text);
+    line-height: 1.5;
+    flex: 1;
+  }
+
+  .cert-issuer {
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: block;
+    margin-top: 4px;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 768px) {
+    .cert-highlight { grid-column: span 1; }
+  }
+</style>

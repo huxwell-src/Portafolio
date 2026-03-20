@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="8" fill="#0f0f0d"/>
+  <!-- N -->
+  <text x="4" y="46" font-family="Georgia, serif" font-size="38" font-weight="400" fill="#ccff00">N</text>
+  <!-- S -->
+  <text x="24" y="46" font-family="Georgia, serif" font-size="38" font-weight="400" fill="#f0ede6">S</text>
+  <!-- B -->
+  <text x="44" y="46" font-family="Georgia, serif" font-size="38" font-weight="400" fill="#00e5ff">B</text>
+  <!-- Accent bottom line -->
+  <rect x="4" y="50" width="56" height="2" rx="1" fill="#ccff00" opacity="0.6"/>
+</svg>

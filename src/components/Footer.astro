@@ -1,0 +1,161 @@
+---
+// Footer.astro — Footer minimalista con nombre, año, quick links, redes sociales
+
+const currentYear = new Date().getFullYear();
+
+const links = [
+  { labelEs: 'Proyectos', labelEn: 'Projects', href: '#projects', key: 'projects' },
+  { labelEs: 'Experiencia', labelEn: 'Experience', href: '#experience', key: 'experience' },
+  { labelEs: 'Skills', labelEn: 'Skills', href: '#skills', key: 'skills' },
+  { labelEs: 'Contacto', labelEn: 'Contact', href: '#contact', key: 'contact' },
+];
+---
+
+<footer>
+  <!-- Accent top bar -->
+  <div class="footer-accent-bar" aria-hidden="true"></div>
+
+  <div class="footer-inner">
+    <!-- Left: brand + copyright -->
+    <div class="footer-brand">
+      <p class="footer-name">Nicolás Sánchez Berríos</p>
+      <p class="footer-copy mono muted">
+        © {currentYear} · <span data-footer="copy">Diseñado y desarrollado por NSB</span>
+      </p>
+    </div>
+
+    <!-- Center: quick links -->
+    <nav class="footer-links" aria-label="Footer navigation">
+      {links.map(l => (
+        <a href={l.href} class="footer-link" data-footer-link={l.key}>{l.labelEs}</a>
+      ))}
+    </nav>
+
+    <!-- Right: social icons -->
+    <div class="footer-socials">
+      <a href="https://github.com/nicolassanchez" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+        </svg>
+      </a>
+      <a href="https://linkedin.com/in/nicolassanchez" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const footerLinks: Record<string, Record<string, string>> = {
+    es: { projects: 'Proyectos', experience: 'Experiencia', skills: 'Skills', contact: 'Contacto' },
+    en: { projects: 'Projects', experience: 'Experience', skills: 'Skills', contact: 'Contact' },
+  };
+  const footerCopy: Record<string, string> = {
+    es: 'Diseñado y desarrollado por NSB',
+    en: 'Designed and built by NSB',
+  };
+
+  window.addEventListener('langChange', (e: any) => {
+    const { lang } = e.detail;
+    document.querySelectorAll('[data-footer-link]').forEach(el => {
+      const key = el.getAttribute('data-footer-link')!;
+      (el as HTMLElement).textContent = footerLinks[lang][key];
+    });
+    const copyEl = document.querySelector('[data-footer="copy"]');
+    if (copyEl) (copyEl as HTMLElement).textContent = footerCopy[lang];
+  });
+</script>
+
+<style>
+  footer {
+    border-top: 1px solid var(--border);
+    background: var(--bg-alt);
+    position: relative;
+  }
+
+  /* Accent gradient top bar */
+  .footer-accent-bar {
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent-1), var(--accent-3), var(--accent-2), var(--accent-4));
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--space-xl) var(--space-lg);
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: var(--space-lg);
+  }
+
+  /* Brand */
+  .footer-brand { display: flex; flex-direction: column; gap: 4px; }
+
+  .footer-name {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    color: var(--text);
+  }
+
+  .footer-copy {
+    font-size: var(--text-xs);
+    letter-spacing: 0.06em;
+  }
+
+  /* Quick links */
+  .footer-links {
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .footer-link {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    transition: color 0.2s;
+  }
+
+  .footer-link:hover { color: var(--accent); }
+
+  /* Socials */
+  .footer-socials {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .footer-socials a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .footer-socials a:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  @media (max-width: 768px) {
+    .footer-inner {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: var(--space-lg);
+    }
+    .footer-links { justify-content: center; }
+    .footer-socials { justify-content: center; }
+  }
+</style>

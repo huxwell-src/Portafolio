@@ -1,0 +1,33 @@
+---
+// index.astro — Página principal que ensambla todos los componentes
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import Projects from '../components/Projects.astro';
+import Experience from '../components/Experience.astro';
+import Skills from '../components/Skills.astro';
+import Certifications from '../components/Certifications.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+import CustomCursor from '../components/CustomCursor.tsx';
+---
+
+<Layout>
+  <!-- Custom cursor — solo desktop, React island -->
+  <CustomCursor client:load />
+
+  <!-- Navbar sticky -->
+  <Navbar />
+
+  <!-- Contenido principal -->
+  <main id="main-content">
+    <Hero />
+    <Projects />
+    <Experience />
+    <Skills />
+    <Certifications />
+    <Contact />
+  </main>
+
+  <Footer />
+</Layout>

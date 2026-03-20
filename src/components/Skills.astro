@@ -1,0 +1,204 @@
+---
+// Skills.astro — Grid de skills por categoría con dot-level indicator y Simple Icons
+
+// Niveles representados con dots (evitamos porcentajes)
+// advanced=3, intermediate=2, basic=1
+const skills = {
+  languages: [
+    { name: 'Python', level: 2, icon: 'python' },
+    { name: 'JavaScript', level: 1, icon: 'javascript' },
+    { name: 'HTML', level: 3, icon: 'html5' },
+    { name: 'CSS', level: 2, icon: 'css' },
+  ],
+  frameworks: [
+    { name: 'Django', level: 2, icon: 'django' },
+    { name: 'React', level: 2, icon: 'react' },
+    { name: 'Node.js', level: 2, icon: 'nodedotjs' },
+    { name: 'Tailwind CSS', level: 2, icon: 'tailwindcss' },
+    { name: 'Flask', level: 1, icon: 'flask' },
+    { name: 'FastAPI', level: 1, icon: 'fastapi' },
+  ],
+  databases: [
+    { name: 'MySQL', level: 2, icon: 'mysql' },
+    { name: 'SQL Server', level: 2, icon: 'microsoftsqlserver' },
+    { name: 'Oracle SQL', level: 2, icon: 'oracle' },
+  ],
+  tools: [
+    { name: 'Git', level: 2, icon: 'git' },
+    { name: 'Power BI', level: 1, icon: 'powerbi' },
+    { name: 'Looker', level: 1, icon: 'looker' },
+    { name: 'Selenium', level: 1, icon: 'selenium' },
+    { name: 'Azure DP-900', level: 1, icon: 'microsoftazure' },
+  ],
+};
+
+// Simple Icons CDN base URL
+const siBase = 'https://cdn.simpleicons.org';
+
+// Level label map
+const levelMap = { 1: 'Básico', 2: 'Intermedio', 3: 'Avanzado' };
+---
+
+<section id="skills" class="section">
+  <div class="section-header reveal">
+    <p class="section-label">05 — <span data-skills-label="subtitle">Tecnologías y herramientas</span></p>
+    <h2 class="section-title" data-skills-label="title">Skills</h2>
+  </div>
+
+  <div class="skills-grid">
+    {Object.entries(skills).map(([cat, items], ci) => (
+      <div class={`skill-category reveal reveal-delay-${ci + 1}`}>
+        <h3 class="cat-title" data-cat={cat}>
+          {cat === 'languages' ? 'Lenguajes' : cat === 'frameworks' ? 'Frameworks' : cat === 'databases' ? 'Bases de datos' : 'Herramientas'}
+        </h3>
+        <ul class="skill-list">
+          {items.map(skill => (
+            <li class="skill-item">
+              {/* Simple Icons via CDN */}
+              <img
+                src={`${siBase}/${skill.icon}`}
+                alt={skill.name}
+                width="16"
+                height="16"
+                class="skill-icon"
+                loading="lazy"
+              />
+              <span class="skill-name">{skill.name}</span>
+              {/* Dot level indicator */}
+              <div class="skill-dots" aria-label={levelMap[skill.level as keyof typeof levelMap]}>
+                {[1, 2, 3].map(d => (
+                  <span class={`dot ${d <= skill.level ? 'dot-filled' : ''}`} aria-hidden="true"></span>
+                ))}
+              </div>
+              <span class="skill-level-label mono muted">{levelMap[skill.level as keyof typeof levelMap]}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+</section>
+
+<script>
+  const catLabels: Record<string, Record<string, string>> = {
+    es: { title: 'Skills', subtitle: 'Tecnologías y herramientas', languages: 'Lenguajes', frameworks: 'Frameworks', databases: 'Bases de datos', tools: 'Herramientas' },
+    en: { title: 'Skills', subtitle: 'Technologies & tools', languages: 'Languages', frameworks: 'Frameworks', databases: 'Databases', tools: 'Tools' },
+  };
+  const levelLabelsMap: Record<string, Record<string, string>> = {
+    es: { '1': 'Básico', '2': 'Intermedio', '3': 'Avanzado' },
+    en: { '1': 'Basic', '2': 'Intermediate', '3': 'Advanced' },
+  };
+
+  window.addEventListener('langChange', (e: any) => {
+    const { lang } = e.detail;
+    const l = catLabels[lang];
+    document.querySelectorAll('[data-skills-label]').forEach(el => {
+      (el as HTMLElement).textContent = l[el.getAttribute('data-skills-label')!];
+    });
+    document.querySelectorAll('[data-cat]').forEach(el => {
+      const key = el.getAttribute('data-cat')!;
+      (el as HTMLElement).textContent = l[key];
+    });
+    // Update level labels
+    document.querySelectorAll('.skill-level-label').forEach((el, idx) => {
+      const dots = el.previousElementSibling as HTMLElement;
+      const filled = dots?.querySelectorAll('.dot-filled').length;
+      if (filled !== undefined) {
+        (el as HTMLElement).textContent = levelLabelsMap[lang][String(filled)] ?? (el as HTMLElement).textContent;
+      }
+    });
+  });
+</script>
+
+<style>
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-xl);
+  }
+
+  .cat-title {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-sm);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .skill-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .skill-item {
+    display: grid;
+    grid-template-columns: 20px 1fr auto auto;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 8px;
+    border-radius: var(--radius-sm);
+    transition: background 0.2s;
+  }
+
+  .skill-item:hover {
+    background: var(--bg-alt);
+  }
+
+  .skill-icon {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    filter: none;
+    /* Force theme-aware icon using CSS — simple icons use currentColor via SVG */
+  }
+
+  /* Invert icons in dark mode so they stay visible */
+  [data-theme="dark"] .skill-icon {
+    filter: invert(1) brightness(0.85);
+  }
+
+  .skill-name {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--text);
+  }
+
+  .skill-dots {
+    display: flex;
+    gap: 4px;
+  }
+
+  .dot {
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    border: 1.5px solid var(--text-muted);
+    background: transparent;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .dot.dot-filled {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .skill-level-label {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+    min-width: 5.5rem;
+    text-align: right;
+  }
+
+  @media (max-width: 768px) {
+    .skills-grid { grid-template-columns: 1fr; }
+    .skill-level-label { display: none; }
+    .skill-item { grid-template-columns: 20px 1fr auto; }
+  }
+</style>

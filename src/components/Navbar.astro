@@ -1,0 +1,242 @@
+---
+// Navbar.astro — sticky nav con blur, anclas, toggle tema/idioma, hamburger móvil
+import ThemeToggle from './ThemeToggle.tsx';
+---
+
+<nav id="navbar" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <!-- Logo / iniciales -->
+    <a href="#hero" class="nav-logo" aria-label="Inicio">
+      <span class="logo-nsb">NSB</span>
+    </a>
+
+    <!-- Links desktop -->
+    <ul class="nav-links" id="nav-links" role="list">
+      <li><a href="#projects" data-nav="projects" class="nav-link">Proyectos</a></li>
+      <li><a href="#experience" data-nav="experience" class="nav-link">Experiencia</a></li>
+      <li><a href="#skills" data-nav="skills" class="nav-link">Skills</a></li>
+      <li><a href="#certifications" data-nav="certifications" class="nav-link">Certificaciones</a></li>
+      <li><a href="#contact" data-nav="contact" class="nav-link">Contacto</a></li>
+    </ul>
+
+    <!-- Controls: theme + lang toggle -->
+    <div class="nav-controls">
+      <ThemeToggle client:load currentLang="es" />
+      <!-- Hamburger (mobile) -->
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu drawer -->
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <ul role="list">
+      <li><a href="#projects" class="nav-link" data-nav="projects">Proyectos</a></li>
+      <li><a href="#experience" class="nav-link" data-nav="experience">Experiencia</a></li>
+      <li><a href="#skills" class="nav-link" data-nav="skills">Skills</a></li>
+      <li><a href="#certifications" class="nav-link" data-nav="certifications">Certificaciones</a></li>
+      <li><a href="#contact" class="nav-link" data-nav="contact">Contacto</a></li>
+    </ul>
+  </div>
+</nav>
+
+<script>
+  // Scroll → sticky effect
+  const nav = document.getElementById('navbar')!;
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Hamburger toggle
+  const burger = document.getElementById('hamburger')!;
+  const mobileMenu = document.getElementById('mobile-menu')!;
+  burger.addEventListener('click', () => {
+    const open = burger.getAttribute('aria-expanded') === 'true';
+    burger.setAttribute('aria-expanded', String(!open));
+    burger.classList.toggle('open', !open);
+    mobileMenu.classList.toggle('open', !open);
+    mobileMenu.setAttribute('aria-hidden', String(open));
+  });
+
+  // Close mobile menu on link click
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      burger.setAttribute('aria-expanded', 'false');
+      burger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+    });
+  });
+
+  // i18n nav labels
+  const navLabels: Record<string, Record<string, string>> = {
+    es: { projects: 'Proyectos', experience: 'Experiencia', skills: 'Skills', certifications: 'Certificaciones', contact: 'Contacto' },
+    en: { projects: 'Projects', experience: 'Experience', skills: 'Skills', certifications: 'Certifications', contact: 'Contact' },
+  };
+  window.addEventListener('langChange', (e: any) => {
+    const { lang } = e.detail;
+    document.querySelectorAll('[data-nav]').forEach(el => {
+      const key = el.getAttribute('data-nav')!;
+      el.textContent = navLabels[lang]?.[key] ?? el.textContent;
+    });
+  });
+</script>
+
+<style>
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    height: var(--nav-h);
+    border-bottom: 1px solid transparent;
+    transition: background var(--duration) var(--ease),
+                border-color var(--duration) var(--ease),
+                backdrop-filter var(--duration) var(--ease);
+  }
+
+  nav.scrolled {
+    background: var(--surface);
+    border-color: var(--border);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100%;
+    padding: 0 var(--space-lg);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-lg);
+  }
+
+  /* Logo */
+  .nav-logo {
+    flex-shrink: 0;
+  }
+
+  .logo-nsb {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    transition: border-color var(--duration), color var(--duration), background var(--duration);
+  }
+
+  .nav-logo:hover .logo-nsb {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 8%, transparent);
+  }
+
+  /* Links */
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    list-style: none;
+    flex: 1;
+    justify-content: center;
+  }
+
+  .nav-link {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 6px 10px;
+    border-radius: var(--radius-sm);
+    transition: color var(--duration), background var(--duration);
+    white-space: nowrap;
+  }
+
+  .nav-link:hover {
+    color: var(--text);
+    background: var(--bg-alt);
+  }
+
+  /* Controls */
+  .nav-controls {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    flex-shrink: 0;
+  }
+
+  /* Hamburger */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: transparent;
+    gap: 5px;
+    transition: border-color var(--duration);
+  }
+
+  .hamburger:hover { border-color: var(--accent); }
+
+  .hamburger span {
+    display: block;
+    width: 16px;
+    height: 1.5px;
+    background: var(--text);
+    transition: transform 0.25s var(--ease), opacity 0.25s;
+  }
+
+  .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* Mobile menu */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: var(--nav-h);
+    left: 0;
+    width: 100%;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: var(--space-md) var(--space-lg);
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: transform 0.3s var(--ease), opacity 0.3s;
+  }
+
+  .mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: var(--space-xs); }
+
+  .mobile-menu .nav-link {
+    font-size: var(--text-sm);
+    padding: var(--space-sm) var(--space-md);
+    display: block;
+  }
+
+  .mobile-menu.open {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .mobile-menu { display: block; }
+    .nav-inner { padding: 0 var(--space-md); }
+  }
+</style>
