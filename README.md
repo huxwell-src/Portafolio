@@ -8,7 +8,7 @@ Portfolio personal de **Nicolás Sánchez Berríos**, Ingeniero en Informática 
 Construido enfocándose firmemente en la velocidad, rendimiento SEO y una estética sofisticada del estilo *Minimalista Documental / Dopamine Decor*.
 
 ---
-
+|
 ## 📸 Capturas de Pantalla
 
 ### Vista Principal (Tema Claro)
