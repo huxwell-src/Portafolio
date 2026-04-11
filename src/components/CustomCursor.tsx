@@ -20,13 +20,15 @@ export default function CustomCursor() {
     const onMouseMove = (e: MouseEvent) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
-      dot.style.transform = `translate(${mouseX - 4}px, ${mouseY - 4}px)`;
+      dot.style.setProperty("--x", `${mouseX}px`);
+      dot.style.setProperty("--y", `${mouseY}px`);
     };
 
     const animRing = () => {
       ringX += (mouseX - ringX) * 0.22;
       ringY += (mouseY - ringY) * 0.22;
-      ring.style.transform = `translate(${ringX - 16}px, ${ringY - 16}px)`;
+      ring.style.setProperty("--x", `${ringX}px`);
+      ring.style.setProperty("--y", `${ringY}px`);
       animId = requestAnimationFrame(animRing);
     };
     animId = requestAnimationFrame(animRing);
@@ -74,27 +76,31 @@ export default function CustomCursor() {
           pointer-events: none;
           z-index: 9999;
           border-radius: 50%;
-          transition: opacity 0.3s;
-          will-change: transform;
+          will-change: translate, scale;
         }
         #cursor-dot {
           width: 8px; height: 8px;
           background: var(--accent);
+          translate: calc(var(--x, -100px) - 50%) calc(var(--y, -100px) - 50%);
+          scale: var(--scale, 1);
+          transition: background-color 0.2s, scale 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
         #cursor-ring {
           width: 32px; height: 32px;
           border: 1.5px solid var(--accent);
           opacity: 0.5;
-          transition: width 0.2s, height 0.2s, opacity 0.2s, border-color 0.2s;
+          translate: calc(var(--x, -100px) - 50%) calc(var(--y, -100px) - 50%);
+          scale: var(--scale, 1);
+          transition: border-color 0.2s, opacity 0.2s, scale 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
         #cursor-dot.cursor-hover {
           background: var(--accent-2);
-          transform: scale(2) !important;
+          --scale: 2;
         }
         #cursor-ring.cursor-hover {
-          width: 48px; height: 48px;
           opacity: 0.3;
           border-color: var(--accent-2);
+          --scale: 1.5;
         }
 
         @media (pointer: coarse) {

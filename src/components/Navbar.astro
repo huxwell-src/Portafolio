@@ -44,6 +44,8 @@ import ThemeToggle from './ThemeToggle.tsx';
 </nav>
 
 <script>
+  import { animate } from 'framer-motion';
+
   // Scroll → sticky effect
   const nav = document.getElementById('navbar')!;
   window.addEventListener('scroll', () => {
@@ -81,6 +83,34 @@ import ThemeToggle from './ThemeToggle.tsx';
     document.querySelectorAll('[data-nav]').forEach(el => {
       const key = el.getAttribute('data-nav')!;
       el.textContent = navLabels[lang]?.[key] ?? el.textContent;
+    });
+  });
+
+  // Framer Motion Smooth Scrolling
+  document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const href = link.getAttribute('href')!;
+      const target = document.querySelector(href);
+      if (target) {
+        // Offset for the fixed navbar height
+        const offset = 80;
+        const targetY = target.getBoundingClientRect().top + window.scrollY - offset;
+        
+        // Temporarily disable native smooth scroll
+        document.documentElement.style.scrollBehavior = 'auto';
+        
+        animate(window.scrollY, targetY, {
+          type: "spring",
+          stiffness: 60,
+          damping: 15,
+          mass: 1,
+          onUpdate: (latest) => window.scrollTo(0, latest),
+          onComplete: () => {
+            document.documentElement.style.scrollBehavior = '';
+          }
+        });
+      }
     });
   });
 </script>

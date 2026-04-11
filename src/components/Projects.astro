@@ -10,49 +10,17 @@ const categoryAccent: Record<string, string> = {
 
 const projects = [
   {
-    id: "p1",
-    titleEs: "API de Gestión de Inventario",
-    titleEn: "Inventory Management API",
+    id: "p4",
+    titleEs: "RTDMQuote — Plugin WooCommerce",
+    titleEn: "RTDMQuote — Quotes Plugin",
     descEs:
-      "API REST con autenticación JWT, CRUD completo, validaciones y documentación con Swagger. Diseñada para integrarse con sistemas externos.",
+      "Plugin WordPress que reemplaza el flujo de compra por un sistema de solicitud de cotizaciones. Incluye panel admin y notificaciones.",
     descEn:
-      "REST API with JWT authentication, full CRUD, validations and Swagger documentation. Designed to integrate with external systems.",
-    stack: ["Python", "Django", "REST Framework", "MySQL", "JWT"],
+      "WordPress plugin that replaces the checkout flow with a quote request system. Includes admin panel and notifications.",
+    stack: ["PHP", "WordPress", "WooCommerce", "jQuery", "MySQL"],
     category: "backend",
-    categoryLabelEs: "Backend",
-    categoryLabelEn: "Backend",
-    status: "dev",
-    statusLabelEs: "En desarrollo",
-    statusLabelEn: "In progress",
-  },
-  {
-    id: "p2",
-    titleEs: "Dashboard de Seguimiento Personal",
-    titleEn: "Personal Tracking Dashboard",
-    descEs:
-      "Aplicación web para visualizar métricas personales con consumo de API propia, diseño responsivo y modo oscuro.",
-    descEn:
-      "Web app to visualize personal metrics consuming a custom API, with responsive design and dark mode.",
-    stack: ["React", "Tailwind CSS", "Node.js", "Chart.js"],
-    category: "frontend",
-    categoryLabelEs: "Frontend",
-    categoryLabelEn: "Frontend",
-    status: "dev",
-    statusLabelEs: "En desarrollo",
-    statusLabelEn: "In progress",
-  },
-  {
-    id: "p3",
-    titleEs: "Análisis de Datos Operacionales",
-    titleEn: "Operational Data Analysis",
-    descEs:
-      "Pipeline de extracción y transformación de datos operacionales con visualización en dashboard interactivo para toma de decisiones.",
-    descEn:
-      "Extraction and transformation pipeline for operational data with an interactive dashboard for decision-making.",
-    stack: ["Python", "Pandas", "Power BI", "SQL Server"],
-    category: "data",
-    categoryLabelEs: "Data Analytics",
-    categoryLabelEn: "Data Analytics",
+    categoryLabelEs: "Plugin",
+    categoryLabelEn: "Plugin",
     status: "done",
     statusLabelEs: "Completado",
     statusLabelEn: "Completed",
@@ -212,6 +180,8 @@ const projects = [
 </section>
 
 <script>
+  import { animate } from "framer-motion";
+
   let currentLang = "es";
   if (typeof localStorage !== "undefined" && localStorage.getItem("nsb_lang")) {
     currentLang = localStorage.getItem("nsb_lang")!;
@@ -221,103 +191,43 @@ const projects = [
   const projectData: Record<string, Record<string, any>> = {
     es: {
       section: { title: "Proyectos", subtitle: "Trabajo seleccionado" },
-      p1: {
-        title: "API de Gestión de Inventario",
-        desc: "API REST con autenticación JWT, CRUD completo, validaciones y documentación con Swagger. Diseñada para integrarse con sistemas externos.",
-        cat: "Backend",
-        status: "En desarrollo",
-        github: "GitHub",
-        demo: "Ver demo",
-        longDesc:
-          "Una API REST robusta construida con Django REST Framework para la gestión integral de inventarios. Soporta múltiples sucursales, control de stock en tiempo real y generación de reportes automáticos. Diseñada bajo principios de arquitectura limpia.",
-        features: [
-          "Autenticación basada en JWT.",
-          "Filtros avanzados y paginación.",
-          "Documentación interactiva con Swagger/OpenAPI.",
-          "Modelo de relaciones complejas en SQL.",
-        ],
-      },
-      p2: {
-        title: "Dashboard de Seguimiento Personal",
-        desc: "Aplicación web para visualizar métricas personales con consumo de API propia, diseño responsivo y modo oscuro.",
-        cat: "Frontend",
-        status: "En desarrollo",
-        github: "GitHub",
-        demo: "Ver demo",
-        longDesc:
-          "Plataforma frontend construida como SPA (Single Page App) para graficar métricas, hábitos y objetivos personales. Enfocada fuertemente en una UX ágil y estética minimalista.",
-        features: [
-          "Gráficos interactivos dinámicos con Chart.js.",
-          "Gestión global de estado mediante React hooks.",
-          'Diseño responsivo "mobile-first" con Tailwind.',
-          "Soporte nativo para modo oscuro y claro.",
-        ],
-      },
-      p3: {
-        title: "Análisis de Datos Operacionales",
-        desc: "Pipeline de extracción y transformación de datos operacionales con visualización en dashboard interactivo para toma de decisiones.",
-        cat: "Data Analytics",
+      p4: {
+        title: "RTDMQuote — Plugin WooCommerce",
+        desc: "Plugin WordPress que reemplaza el flujo de compra por un sistema de solicitud de cotizaciones. Incluye panel admin y notificaciones.",
+        cat: "Plugin",
         status: "Completado",
         github: "GitHub",
         demo: "Ver demo",
         longDesc:
-          "Proyecto integral de Business Intelligence que involucra la creación de un pipeline ETL (Extract, Transform, Load) para procesar millones de registros crudos y consolidarlos en un modelo analítico de visualización.",
+          "Plugin WordPress desarrollado desde cero que reemplaza el flujo de compra por un sistema de solicitud de cotizaciones. El cliente arma su carrito y en vez de pagar, envía una solicitud al negocio. Incluye panel de administración con gestión de estados y notificaciones por email.",
         features: [
-          "Scripts ETL automatizados y resilientes con Pandas.",
-          "Creación de un modelo de datos estrella (Star Schema).",
-          "Manipulación e ingesta desde SQL Server.",
-          "Dashboard en Power BI con drill-down interactivo.",
+          "➜ Carrito de cotización independiente via cookies HTTP-only seguras.",
+          "➜ 4 endpoints AJAX con validación de nonces en servidor y cliente.",
+          "➜ Base de datos propia creada con dbDelta() y CRUD completo via $wpdb.",
+          "➜ Panel admin con estados: Nuevo → Contactado → Convertido → Rechazado.",
+          "➜ Email HTML de notificación con configuración SMTP personalizada desde el panel.",
+          "➜ 3 shortcodes: [quote_cart], [quote_badge], [quote_add_button].",
         ],
       },
     },
     en: {
       section: { title: "Projects", subtitle: "Selected work" },
-      p1: {
-        title: "Inventory Management API",
-        desc: "REST API with JWT authentication, full CRUD, validations and Swagger documentation. Designed to integrate with external systems.",
-        cat: "Backend",
-        status: "In progress",
-        github: "GitHub",
-        demo: "Live demo",
-        longDesc:
-          "A robust REST API built with Django REST Framework for comprehensive inventory control. Features multi-branch support, real-time stock tracking, and clean architecture principles.",
-        features: [
-          "JWT based authentication.",
-          "Advanced filtering and pagination.",
-          "Interactive Swagger/OpenAPI documentation.",
-          "Complex SQL relational modeling.",
-        ],
-      },
-      p2: {
-        title: "Personal Tracking Dashboard",
-        desc: "Web app to visualize personal metrics consuming a custom API, with responsive design and dark mode.",
-        cat: "Frontend",
-        status: "In progress",
-        github: "GitHub",
-        demo: "Live demo",
-        longDesc:
-          "Frontend platform (SPA) that consumes custom API data to chart personal metrics and habits over time. Strongly focused on a smooth UX and minimalist design.",
-        features: [
-          "Interactive and dynamic Chart.js graphing.",
-          "Global state management with React hooks.",
-          "Mobile-first responsive Tailwind design.",
-          "Native light and dark mode support.",
-        ],
-      },
-      p3: {
-        title: "Operational Data Analysis",
-        desc: "Extraction and transformation pipeline for operational data with an interactive dashboard for decision-making.",
-        cat: "Data Analytics",
+      p4: {
+        title: "RTDMQuote — Quotes Plugin",
+        desc: "WordPress plugin that replaces the checkout flow with a quote request system. Includes admin panel and notifications.",
+        cat: "Plugin",
         status: "Completed",
         github: "GitHub",
         demo: "Live demo",
         longDesc:
-          "Comprehensive Business Intelligence project involving an ETL (Extract, Transform, Load) pipeline to process raw logs and consolidate them into an analytical model exposed via dashboards.",
+          "A custom-built WordPress plugin that replaces the traditional purchasing flow with a quote request system. Customers build their cart and submit a request instead of paying. Includes an admin panel for state management and email notifications.",
         features: [
-          "Automated and resilient Pandas ETL scripts.",
-          "Creation of an optimized Star Schema model.",
-          "Data manipulation within SQL Server.",
-          "Interactive Power BI drill-down dashboards.",
+          "➜ Independent quote cart via secure HTTP-only cookies.",
+          "➜ 4 AJAX endpoints with server and client-side nonce validation.",
+          "➜ Custom database created with dbDelta() and full CRUD via $wpdb.",
+          "➜ Admin panel with custom states: New → Contacted → Converted → Rejected.",
+          "➜ HTML email notifications with custom SMTP configuration from the panel.",
+          "➜ 3 bundled shortcodes: [quote_cart], [quote_badge], [quote_add_button].",
         ],
       },
     },
@@ -335,7 +245,7 @@ const projects = [
       (el as HTMLElement).textContent =
         d.section[k] ?? (el as HTMLElement).textContent;
     });
-    ["p1", "p2", "p3"].forEach((id) => {
+    ["p4"].forEach((id) => {
       const titleEl = document.querySelector(`[data-proj-title="${id}"]`);
       const descEl = document.querySelector(`[data-proj-desc="${id}"]`);
       const catEl = document.querySelector(`[data-proj-cat="${id}"]`);
@@ -436,14 +346,53 @@ const projects = [
       modal.classList.add("open");
       overlay?.classList.add("open");
       document.body.style.overflow = "hidden";
+
+      // Framer Motion Animate IN
+      if (overlay) animate(overlay, { opacity: [0, 1] }, { duration: 0.3 });
+      animate(
+        modal,
+        {
+          opacity: [0, 1],
+          transform: [
+            "translate(-50%, -40%) scale(0.95)",
+            "translate(-50%, -50%) scale(1)",
+          ],
+        },
+        { type: "spring", bounce: 0.35, duration: 0.6 },
+      );
     });
   });
 
-  const closeModal = () => {
+  let isClosing = false;
+  const closeModal = async () => {
+    if (isClosing || !modal?.classList.contains("open")) return;
+    isClosing = true;
+
+    // Framer Motion Animate OUT
+    if (overlay) animate(overlay, { opacity: [1, 0] }, { duration: 0.2 });
+    await animate(
+      modal,
+      {
+        opacity: [1, 0],
+        transform: [
+          "translate(-50%, -50%) scale(1)",
+          "translate(-50%, -45%) scale(0.96)",
+        ],
+      },
+      { duration: 0.2, ease: "easeOut" },
+    );
+
     modal?.classList.remove("open");
     modal?.removeAttribute("open");
     overlay?.classList.remove("open");
     document.body.style.overflow = "";
+
+    // Reset inline styles injected by framer motion so CSS fallback works cleanly next time
+    modal.style.transform = "";
+    modal.style.opacity = "";
+    if (overlay) overlay.style.opacity = "";
+
+    isClosing = false;
   };
 
   closeBtn?.addEventListener("click", closeModal);
@@ -661,18 +610,6 @@ const projects = [
 
   .project-modal.open {
     display: block;
-    animation: modal-fade-scale 0.4s var(--ease) forwards;
-  }
-
-  @keyframes modal-fade-scale {
-    from {
-      opacity: 0;
-      transform: translate(-50%, -40%) scale(0.98);
-    }
-    to {
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(1);
-    }
   }
 
   .modal-content {

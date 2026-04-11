@@ -14,7 +14,7 @@ Construido enfocándose firmemente en la velocidad, rendimiento SEO y una estét
 ### Vista Principal (Tema Claro)
 <img src="./public/docs/hero.png" width="800" alt="Vista inicial del portfolio con tipografías destacadas e interfaces limpias">
 
-### Detalles Interactivos (Modales Bilingües)
+### Detalles Interactivos
 <img src="./public/docs/modal.png" width="800" alt="Componente de modal mostrando los detalles profundamente técnicos de un proyecto, incluyendo características clave">
 
 ### Soporte Nativo para Modo Oscuro

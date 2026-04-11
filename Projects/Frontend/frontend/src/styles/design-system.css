@@ -1,0 +1,113 @@
+:root {
+  /* ── Fondos ── */
+  --bg-base:     #FFFFFF;
+  --bg-soft:     #F8F7FF;
+  --bg-gradient: linear-gradient(160deg, #FFFFFF 0%, #F8F7FF 40%, #FFF0F9 100%);
+
+  /* ── Orbes ambientales ── */
+  --orb-lavender: rgba(196, 181, 253, 0.25);
+  --orb-pink:     rgba(251, 207, 232, 0.22);
+  --orb-mint:     rgba(167, 243, 208, 0.20);
+  --orb-peach:    rgba(254, 215, 170, 0.20);
+  --orb-sky:      rgba(186, 230, 253, 0.22);
+
+  /* ── Superficies glass ── */
+  --glass:              rgba(255, 255, 255, 0.72);
+  --glass-hover:        rgba(255, 255, 255, 0.88);
+  --glass-modal:        rgba(255, 255, 255, 0.92);
+  --glass-border:       rgba(200, 200, 230, 0.45);
+  --glass-border-hover: rgba(160, 160, 210, 0.70);
+  --glass-shadow:       0 2px 20px rgba(140, 130, 200, 0.08), inset 0 1px 0 rgba(255,255,255,0.85);
+  --glass-shadow-hover: 0 10px 40px rgba(140, 130, 200, 0.14), inset 0 1px 0 rgba(255,255,255,0.95);
+
+  /* ── Texto ── */
+  --text:       #1E1B3A;
+  --text-muted: #7B7A9A;
+  --text-dim:   #C0BDD8;
+
+  /* ── Acento principal ── */
+  --violet:       #7C3AED;
+  --violet-light: #EDE9FE;
+  --violet-mid:   #DDD6FE;
+  --indigo:       #4F46E5;
+  --violet-glow:  rgba(124, 58, 237, 0.12);
+
+  /* ── Pasteles de acento ── */
+  --pastel-lavender: #C4B5FD;
+  --pastel-pink:     #F9A8D4;
+  --pastel-mint:     #6EE7B7;
+  --pastel-peach:    #FCA5A5;
+  --pastel-sky:      #7DD3FC;
+  --pastel-lemon:    #FDE68A;
+  --pastel-lilac:    #E9D5FF;
+
+  /* ── Estados de postulación ── */
+  --applied-color:    #7C3AED;  --applied-light:    #EDE9FE;  --applied-border:    rgba(124,58,237,0.30);
+  --interview-color:  #0284C7;  --interview-light:  #E0F2FE;  --interview-border:  rgba(2,132,199,0.30);
+  --technical-color:  #D97706;  --technical-light:  #FEF3C7;  --technical-border:  rgba(217,119,6,0.30);
+  --offer-color:      #059669;  --offer-light:      #D1FAE5;  --offer-border:      rgba(5,150,105,0.30);
+  --rejected-color:   #E11D48;  --rejected-light:   #FFE4E6;  --rejected-border:   rgba(225,29,72,0.30);
+  --discarded-color:  #9CA3AF;  --discarded-light:  #F3F4F6;  --discarded-border:  rgba(156,163,175,0.30);
+
+  /* ── Espaciado ── */
+  --space-xs: 8px; --space-sm: 16px; --space-md: 24px;
+  --space-lg: 40px; --space-xl: 64px;
+
+  /* ── Tipografía ── */
+  --font-display: 'DM Sans', sans-serif;
+  --font-mono:    'DM Mono', monospace;
+}
+
+.glass-card {
+  background: var(--glass);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  box-shadow: var(--glass-shadow);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.25s ease;
+}
+
+.glass-card:hover {
+  border-color: var(--glass-border-hover);
+  box-shadow: var(--glass-shadow-hover);
+}
+
+.glass-nav {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.glass-modal {
+  background: var(--glass-modal);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  box-shadow: 0 24px 64px rgba(140,130,200,0.18), 0 4px 16px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.95);
+}
+
+.orb {
+  position: fixed;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 50%;
+}
+
+.orb-1 { width:560px; height:560px; background:radial-gradient(circle, var(--orb-lavender), transparent 70%); top:-180px; left:-160px; }
+.orb-2 { width:420px; height:420px; background:radial-gradient(circle, var(--orb-pink),     transparent 70%); bottom:-120px; right:-100px; }
+.orb-3 { width:320px; height:320px; background:radial-gradient(circle, var(--orb-mint),     transparent 70%); top:38%; right:22%; }
+.orb-4 { width:260px; height:260px; background:radial-gradient(circle, var(--orb-peach),    transparent 70%); top:60%; left:15%; }
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, transparent 25%, rgba(255,255,255,0.5) 50%, transparent 75%);
+  background-size: 400% 100%;
+  animation: shimmer 1.5s linear infinite;
+}

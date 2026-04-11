@@ -22,3 +22,16 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Python / Django
+__pycache__/
+*.py[cod]
+*.sqlite3
+.pytest_cache/
+.venv/
+venv/
+
+# Backend prompt docs (no versionar)
+Projects/Backend/prompt_jobtracker_backend.md
+Projects/Backend/prompt_jobtracker_backend_tests.md
+Projects/Backend/jobtracker_endpoints.md

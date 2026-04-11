@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import './design-system.css';
+
+@layer base {
+  body {
+    @apply bg-white text-text font-display antialiased;
+    background-image: var(--bg-gradient);
+    min-height: 100vh;
+  }
+
+  h1 {
+    @apply font-extrabold;
+    font-size: clamp(28px, 5vw, 44px);
+    line-height: 1.1;
+  }
+
+  h2 {
+    @apply font-extrabold;
+    font-size: clamp(20px, 4vw, 28px);
+  }
+
+  h3 {
+    @apply font-bold text-lg;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--violet-light);
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--violet-mid);
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply relative overflow-hidden text-white font-semibold rounded-xl transition-all active:translate-y-0;
+    background: linear-gradient(135deg, var(--violet), var(--indigo));
+    box-shadow: 0 4px 14px var(--violet-glow);
+  }
+  .btn-primary:hover {
+    @apply -translate-y-px;
+    filter: brightness(0.95);
+    box-shadow: 0 6px 20px var(--violet-glow);
+  }
+
+  .btn-ghost {
+    background-color: rgba(255, 255, 255, 0.6);
+    border: 1px solid var(--glass-border);
+    color: var(--text-muted);
+    border-radius: 0.75rem; /* rounded-xl */
+    transition: all 0.2s;
+  }
+  .btn-ghost:hover {
+    background-color: var(--violet-glow);
+    color: var(--violet);
+  }
+
+  .btn-destructive {
+    @apply bg-rejected-light border border-rejected-border text-rejected-color rounded-xl transition-all hover:bg-rejected-color hover:text-white;
+  }
+
+  .input-label {
+    @apply font-mono text-[10px] uppercase tracking-[0.12em] text-text-muted mb-1.5 block;
+  }
+
+  .glass-input {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 1px solid var(--glass-border);
+    border-radius: 0.75rem; /* rounded-xl */
+    font-family: var(--font-mono);
+    font-size: 0.75rem; /* text-xs */
+    color: var(--text);
+    padding: 0.75rem 1rem; /* px-4 py-3 */
+    transition: all 0.2s;
+    outline: none;
+  }
+  .glass-input:focus {
+    border-color: rgba(124, 58, 237, 0.6);
+    box-shadow: 0 0 0 3px var(--violet-glow);
+  }
+  .glass-input.error {
+    @apply border-rejected-color;
+  }
+}
+
+.metric-value {
+  @apply font-extrabold;
+  font-size: clamp(28px, 4vw, 38px);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
