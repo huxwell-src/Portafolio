@@ -67,7 +67,8 @@
 
   /* Border radius */
   --radius-sm:  4px;
-  --radius-md:  8px;
+  --radius-md:  15px;
+  --radius-lg:  20px;
   --radius-full: 999px;
 
   /* Navbar height */
@@ -172,6 +173,7 @@ img, svg { display: block; }
   height: 3px;
   background: var(--accent);
   transition: width 0.4s var(--ease);
+  border-radius: var(--radius-full);
 }
 
 .section-title:hover::after {
