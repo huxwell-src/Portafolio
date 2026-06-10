@@ -74,15 +74,18 @@ import ThemeToggle from './ThemeToggle.tsx';
   });
 
   // i18n nav labels
+  import { matrixText } from '../scripts/matrix-effect';
   const navLabels: Record<string, Record<string, string>> = {
     es: { projects: 'Proyectos', experience: 'Experiencia', skills: 'Skills', certifications: 'Certificaciones', contact: 'Contacto' },
     en: { projects: 'Projects', experience: 'Experience', skills: 'Skills', certifications: 'Certifications', contact: 'Contact' },
   };
   window.addEventListener('langChange', (e: any) => {
     const { lang } = e.detail;
-    document.querySelectorAll('[data-nav]').forEach(el => {
+    const navEls = document.querySelectorAll('[data-nav]');
+    navEls.forEach((el, i) => {
       const key = el.getAttribute('data-nav')!;
-      el.textContent = navLabels[lang]?.[key] ?? el.textContent;
+      const newText = navLabels[lang]?.[key] ?? el.textContent;
+      matrixText(el as HTMLElement, newText, { duration: 500, delay: i * 60 });
     });
   });
 

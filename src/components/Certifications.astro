@@ -53,14 +53,19 @@ const certs = [
     en: { title: 'Certifications', subtitle: 'Additional training' },
   };
 
+  import { matrixText } from '../scripts/matrix-effect';
+
   window.addEventListener('langChange', (e: any) => {
     const { lang } = e.detail;
+    let delayIdx = 0;
     document.querySelectorAll('[data-cert-label]').forEach(el => {
-      (el as HTMLElement).textContent = certSectionLabels[lang][el.getAttribute('data-cert-label')!];
+      matrixText(el as HTMLElement, certSectionLabels[lang][el.getAttribute('data-cert-label')!], { duration: 500, delay: delayIdx * 60 });
+      delayIdx++;
     });
     certData.forEach((c, i) => {
       const el = document.querySelector(`[data-cert-title="${i}"]`);
-      if (el) (el as HTMLElement).textContent = lang === 'en' ? c.en : c.es;
+      if (el) matrixText(el as HTMLElement, lang === 'en' ? c.en : c.es, { duration: 450, delay: delayIdx * 50 });
+      delayIdx++;
     });
   });
 </script>

@@ -57,14 +57,18 @@ const links = [
     en: 'Designed and built by NSB',
   };
 
+  import { matrixText } from '../scripts/matrix-effect';
+
   window.addEventListener('langChange', (e: any) => {
     const { lang } = e.detail;
+    let delayIdx = 0;
     document.querySelectorAll('[data-footer-link]').forEach(el => {
       const key = el.getAttribute('data-footer-link')!;
-      (el as HTMLElement).textContent = footerLinks[lang][key];
+      matrixText(el as HTMLElement, footerLinks[lang][key], { duration: 450, delay: delayIdx * 50 });
+      delayIdx++;
     });
     const copyEl = document.querySelector('[data-footer="copy"]');
-    if (copyEl) (copyEl as HTMLElement).textContent = footerCopy[lang];
+    if (copyEl) matrixText(copyEl as HTMLElement, footerCopy[lang], { duration: 500, delay: delayIdx * 50 });
   });
 </script>
 

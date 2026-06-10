@@ -181,6 +181,7 @@ const projects = [
 
 <script>
   import { animate } from "framer-motion";
+  import { matrixText } from '../scripts/matrix-effect';
 
   let currentLang = "es";
   if (typeof localStorage !== "undefined" && localStorage.getItem("nsb_lang")) {
@@ -240,26 +241,29 @@ const projects = [
     const { lang } = e.detail;
     const d = projectData[lang];
     if (!d) return;
+    let delayIdx = 0;
     document.querySelectorAll("[data-proj-label]").forEach((el) => {
       const k = el.getAttribute("data-proj-label")!;
-      (el as HTMLElement).textContent =
-        d.section[k] ?? (el as HTMLElement).textContent;
+      matrixText(el as HTMLElement, d.section[k] ?? (el as HTMLElement).textContent, { duration: 550, delay: delayIdx * 80 });
+      delayIdx++;
     });
     ["p4"].forEach((id) => {
       const titleEl = document.querySelector(`[data-proj-title="${id}"]`);
       const descEl = document.querySelector(`[data-proj-desc="${id}"]`);
       const catEl = document.querySelector(`[data-proj-cat="${id}"]`);
       const statusEl = document.querySelector(`[data-proj-status="${id}"]`);
-      if (titleEl) (titleEl as HTMLElement).textContent = d[id].title;
-      if (descEl) (descEl as HTMLElement).textContent = d[id].desc;
-      if (catEl) (catEl as HTMLElement).textContent = d[id].cat;
-      if (statusEl) (statusEl as HTMLElement).textContent = d[id].status;
+      if (titleEl) matrixText(titleEl as HTMLElement, d[id].title, { duration: 550, delay: delayIdx * 80 });
+      if (descEl) matrixText(descEl as HTMLElement, d[id].desc, { duration: 600, delay: delayIdx * 80 });
+      if (catEl) matrixText(catEl as HTMLElement, d[id].cat, { duration: 450, delay: delayIdx * 80 });
+      if (statusEl) matrixText(statusEl as HTMLElement, d[id].status, { duration: 450, delay: delayIdx * 80 });
+      delayIdx++;
       document.querySelectorAll('[data-proj-btn="github"]').forEach((el) => {
-        (el as HTMLElement).textContent = d[id].github;
+        matrixText(el as HTMLElement, d[id].github, { duration: 450, delay: delayIdx * 80 });
       });
       document.querySelectorAll('[data-proj-btn="demo"]').forEach((el) => {
-        (el as HTMLElement).textContent = d[id].demo;
+        matrixText(el as HTMLElement, d[id].demo, { duration: 450, delay: delayIdx * 80 });
       });
+      delayIdx++;
     });
 
     if (modal?.classList.contains("open")) {

@@ -80,6 +80,8 @@ const levelMap = { 1: 'Básico', 2: 'Intermedio', 3: 'Avanzado' };
 </section>
 
 <script>
+  import { matrixText } from '../scripts/matrix-effect';
+
   const catLabels: Record<string, Record<string, string>> = {
     es: { title: 'Skills', subtitle: 'Tecnologías y herramientas', languages: 'Lenguajes', frameworks: 'Frameworks', databases: 'Bases de datos', tools: 'Herramientas' },
     en: { title: 'Skills', subtitle: 'Technologies & tools', languages: 'Languages', frameworks: 'Frameworks', databases: 'Databases', tools: 'Tools' },
@@ -92,19 +94,23 @@ const levelMap = { 1: 'Básico', 2: 'Intermedio', 3: 'Avanzado' };
   window.addEventListener('langChange', (e: any) => {
     const { lang } = e.detail;
     const l = catLabels[lang];
+    let delayIdx = 0;
     document.querySelectorAll('[data-skills-label]').forEach(el => {
-      (el as HTMLElement).textContent = l[el.getAttribute('data-skills-label')!];
+      matrixText(el as HTMLElement, l[el.getAttribute('data-skills-label')!], { duration: 500, delay: delayIdx * 60 });
+      delayIdx++;
     });
     document.querySelectorAll('[data-cat]').forEach(el => {
       const key = el.getAttribute('data-cat')!;
-      (el as HTMLElement).textContent = l[key];
+      matrixText(el as HTMLElement, l[key], { duration: 450, delay: delayIdx * 60 });
+      delayIdx++;
     });
     // Update level labels
-    document.querySelectorAll('.skill-level-label').forEach((el, idx) => {
+    document.querySelectorAll('.skill-level-label').forEach((el) => {
       const dots = el.previousElementSibling as HTMLElement;
       const filled = dots?.querySelectorAll('.dot-filled').length;
       if (filled !== undefined) {
-        (el as HTMLElement).textContent = levelLabelsMap[lang][String(filled)] ?? (el as HTMLElement).textContent;
+        const newText = levelLabelsMap[lang][String(filled)] ?? (el as HTMLElement).textContent;
+        matrixText(el as HTMLElement, newText, { duration: 400, delay: delayIdx * 40 });
       }
     });
   });

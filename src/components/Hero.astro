@@ -6,7 +6,7 @@
   <div class="hero-inner">
     <!-- Etiqueta superior editorial -->
     <p class="hero-eyebrow reveal">
-      <span class="mono muted">Portfolio · 2025</span>
+      <span class="mono muted">Portfolio · 2026</span>
     </p>
 
     <!-- Nombre — elemento hero tipográfico -->
@@ -114,6 +114,7 @@
 </section>
 
 <script>
+  import { matrixText } from '../scripts/matrix-effect';
   // i18n hero texts
   const heroTexts: Record<string, Record<string, string>> = {
     es: {
@@ -127,10 +128,11 @@
   };
   window.addEventListener("langChange", (e: any) => {
     const { lang } = e.detail;
-    document.querySelectorAll("[data-hero]").forEach((el) => {
+    const heroEls = document.querySelectorAll("[data-hero]");
+    heroEls.forEach((el, i) => {
       const key = el.getAttribute("data-hero")!;
-      (el as HTMLElement).innerText =
-        heroTexts[lang]?.[key] ?? (el as HTMLElement).innerText;
+      const newText = heroTexts[lang]?.[key] ?? (el as HTMLElement).innerText;
+      matrixText(el as HTMLElement, newText, { duration: 700, delay: i * 150 });
     });
   });
 </script>

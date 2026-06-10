@@ -117,6 +117,8 @@ const items = [
 </section>
 
 <script>
+  import { matrixText } from '../scripts/matrix-effect';
+
   const expLabels: Record<string, Record<string, string>> = {
     es: { title: 'Experiencia', subtitle: 'Carrera profesional' },
     en: { title: 'Experience', subtitle: 'Professional career' },
@@ -140,19 +142,33 @@ const items = [
   window.addEventListener('langChange', (e: any) => {
     const { lang } = e.detail;
     const labels = expLabels[lang];
+    let delayIdx = 0;
     document.querySelectorAll('[data-exp-label]').forEach(el => {
       const k = el.getAttribute('data-exp-label')!;
-      (el as HTMLElement).textContent = labels[k];
+      matrixText(el as HTMLElement, labels[k], { duration: 500, delay: delayIdx * 60 });
+      delayIdx++;
     });
     ['exp1','exp2','exp3','exp4'].forEach(id => {
       const d = expData[lang]?.[id];
       if (!d) return;
       const roleEl = document.querySelector(`[data-exp-role="${id}"]`);
-      if (roleEl) (roleEl as HTMLElement).textContent = d.role;
+      if (roleEl) matrixText(roleEl as HTMLElement, d.role, { duration: 550, delay: delayIdx * 60 });
       const bulletsEl = document.querySelector(`[data-exp-bullets="${id}"]`);
       if (bulletsEl) {
-        bulletsEl.innerHTML = d.bullets.map(b => `<li>${b}</li>`).join('');
+        if (!bulletsEl.querySelector('li') && bulletsEl.children.length === 0) {
+          (bulletsEl as HTMLElement).innerHTML = d.bullets.map(b => `<li>${b}</li>`).join('');
+        } else {
+          // Create or reuse li elements and animate each bullet
+          const currentLis = Array.from(bulletsEl.querySelectorAll('li'));
+          if (currentLis.length !== d.bullets.length) {
+            bulletsEl.innerHTML = d.bullets.map(() => `<li></li>`).join('');
+          }
+          Array.from(bulletsEl.querySelectorAll('li')).forEach((li, i) => {
+            matrixText(li as HTMLElement, d.bullets[i], { duration: 500, delay: delayIdx * 60 + i * 80 });
+          });
+        }
       }
+      delayIdx++;
     });
   });
 </script>
@@ -248,12 +264,12 @@ const items = [
   }
 
   .exp-bullets li::before {
-    content: '→';
+    content: '➔';
     position: absolute;
     left: 0;
     color: var(--accent);
-    font-size: 0.75em;
-    top: 0.15em;
+    font-size: 1.5em;
+    top: -0.3em;
   }
 
   @media (max-width: 768px) {
