@@ -1,7 +1,6 @@
 ---
 // Projects.astro — 3 project cards con stack, categoría, status y botones
 
-// Colores de acento por categoría
 const categoryAccent: Record<string, string> = {
   backend: "var(--accent-1)",
   frontend: "var(--accent-3)",
@@ -10,20 +9,22 @@ const categoryAccent: Record<string, string> = {
 
 const projects = [
   {
-    id: "p4",
-    titleEs: "RTDMQuote — Plugin WooCommerce",
-    titleEn: "RTDMQuote — Quotes Plugin",
+    id: "001",
+    titleEs: "Caso Abierto — Misterio en SQL",
+    titleEn: "Caso Abierto — SQL Mystery Game",
     descEs:
-      "Plugin WordPress que reemplaza el flujo de compra por un sistema de solicitud de cotizaciones. Incluye panel admin y notificaciones.",
+      "Juego donde resolvés un fraude corporativo escribiendo SQL. El verdadero desafío: un sandbox que ejecuta consultas arbitrarias de forma segura.",
     descEn:
-      "WordPress plugin that replaces the checkout flow with a quote request system. Includes admin panel and notifications.",
-    stack: ["PHP", "WordPress", "WooCommerce", "jQuery", "MySQL"],
+      "A game where you solve a corporate fraud by writing SQL. The real challenge: a sandbox that safely executes arbitrary queries.",
+    stack: ["Python", "FastAPI", "SQLite", "CodeMirror", "Pytest"],
     category: "backend",
-    categoryLabelEs: "Plugin",
-    categoryLabelEn: "Plugin",
+    categoryLabelEs: "Juego / API",
+    categoryLabelEn: "Game / API",
     status: "done",
     statusLabelEs: "Completado",
     statusLabelEn: "Completed",
+    githubUrl: "https://github.com/huxwell-src/sql-detective",
+    demoUrl: "https://caso-abierto.onrender.com/",
   },
 ];
 ---
@@ -79,48 +80,93 @@ const projects = [
 
           {/* Buttons */}
           <div class="card-actions">
-            <button
-              class="btn btn-ghost"
-              disabled
-              title="Próximamente / Coming soon"
-              aria-label="GitHub — próximamente"
-            >
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                aria-hidden="true"
+            {p.githubUrl ? (
+              <a
+                class="btn btn-ghost"
+                href={p.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Ver en GitHub"
               >
-                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-              </svg>
-              <span data-proj-btn="github">GitHub</span>
-            </button>
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                </svg>
+                <span data-proj-btn="github">GitHub</span>
+              </a>
+            ) : (
+              <button
+                class="btn btn-ghost"
+                disabled
+                title="Próximamente / Coming soon"
+                aria-label="GitHub — próximamente"
+              >
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                </svg>
+                <span data-proj-btn="github">GitHub</span>
+              </button>
+            )}
 
-            <button
-              class="btn btn-accent"
-              disabled
-              title="Próximamente / Coming soon"
-              aria-label="Demo — próximamente"
-            >
-              <span data-proj-btn="demo">Ver demo</span>
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
+            {p.demoUrl ? (
+              <a
+                class="btn btn-accent"
+                href={p.demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Ver demo"
               >
-                <>
+                <span data-proj-btn="demo">Ver demo</span>
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
                   <path d="M7 7h10v10" />
                   <path d="M7 17 17 7" />
-                </>
-              </svg>
-            </button>
+                </svg>
+              </a>
+            ) : (
+              <button
+                class="btn btn-accent"
+                disabled
+                title="Próximamente / Coming soon"
+                aria-label="Demo — próximamente"
+              >
+                <span data-proj-btn="demo">Ver demo</span>
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M7 7h10v10" />
+                  <path d="M7 17 17 7" />
+                </svg>
+              </button>
+            )}
           </div>
 
           {/* Accent border bottom line */}
@@ -181,7 +227,7 @@ const projects = [
 
 <script>
   import { animate } from "framer-motion";
-  import { matrixText } from '../scripts/matrix-effect';
+import { matrixText } from '../scripts/matrix-effect';
 
   let currentLang = "es";
   if (typeof localStorage !== "undefined" && localStorage.getItem("nsb_lang")) {
@@ -192,43 +238,43 @@ const projects = [
   const projectData: Record<string, Record<string, any>> = {
     es: {
       section: { title: "Proyectos", subtitle: "Trabajo seleccionado" },
-      p4: {
-        title: "RTDMQuote — Plugin WooCommerce",
-        desc: "Plugin WordPress que reemplaza el flujo de compra por un sistema de solicitud de cotizaciones. Incluye panel admin y notificaciones.",
-        cat: "Plugin",
+      "001": {
+        title: "Caso Abierto — Misterio en SQL",
+        desc: "Juego donde resolvés un fraude corporativo escribiendo SQL. El verdadero desafío: un sandbox que ejecuta consultas arbitrarias de forma segura.",
+        cat: "Juego / API",
         status: "Completado",
         github: "GitHub",
         demo: "Ver demo",
         longDesc:
-          "Plugin WordPress desarrollado desde cero que reemplaza el flujo de compra por un sistema de solicitud de cotizaciones. El cliente arma su carrito y en vez de pagar, envía una solicitud al negocio. Incluye panel de administración con gestión de estados y notificaciones por email.",
+          "Juego de misterio donde el jugador es auditor y resuelve un fraude corporativo cruzando tablas con consultas SQL propias: turnos, accesos, notas de crédito. Incluye pistas falsas sembradas a propósito, que solo se descartan con la query correcta. El componente central no es el juego en sí, sino el sandbox que permite ejecutar SQL arbitrario de cualquier visitante sin comprometer el servidor.",
         features: [
-          "➜ Carrito de cotización independiente via cookies HTTP-only seguras.",
-          "➜ 4 endpoints AJAX con validación de nonces en servidor y cliente.",
-          "➜ Base de datos propia creada con dbDelta() y CRUD completo via $wpdb.",
-          "➜ Panel admin con estados: Nuevo → Contactado → Convertido → Rechazado.",
-          "➜ Email HTML de notificación con configuración SMTP personalizada desde el panel.",
-          "➜ 3 shortcodes: [quote_cart], [quote_badge], [quote_add_button].",
+          "➜ Sandbox de SQL con doble capa: conexión de solo lectura + authorizer de SQLite con lista blanca de funciones.",
+          "➜ Timeout cooperativo vía progress handler para bloquear consultas costosas (CTEs recursivas, productos cartesianos).",
+          "➜ Suite de 27 intentos de escape como pruebas automatizadas (DDL, ATTACH, PRAGMA, funciones peligrosas, multi-statement).",
+          "➜ Motor de casos desacoplado del contenido: cada misterio es un directorio con metadata JSON y script generador.",
+          "➜ Datos generados de forma reproducible (semilla fija) y verificados con validaciones automáticas antes de servirse.",
+          "➜ Validación de acusaciones 100% server-side, con retroalimentación específica por sospechoso y límite de intentos.",
         ],
       },
     },
     en: {
       section: { title: "Projects", subtitle: "Selected work" },
-      p4: {
-        title: "RTDMQuote — Quotes Plugin",
-        desc: "WordPress plugin that replaces the checkout flow with a quote request system. Includes admin panel and notifications.",
-        cat: "Plugin",
+      "001": {
+        title: "Caso Abierto — SQL Mystery Game",
+        desc: "A game where you solve a corporate fraud by writing SQL. The real challenge: a sandbox that safely executes arbitrary queries.",
+        cat: "Game / API",
         status: "Completed",
         github: "GitHub",
         demo: "Live demo",
         longDesc:
-          "A custom-built WordPress plugin that replaces the traditional purchasing flow with a quote request system. Customers build their cart and submit a request instead of paying. Includes an admin panel for state management and email notifications.",
+          "A mystery game where the player is an auditor solving a corporate fraud by cross-referencing tables with their own SQL queries: shifts, access logs, credit notes. Includes intentionally seeded red herrings that only get ruled out with the correct query. The core component isn't the game itself, but the sandbox that lets any visitor run arbitrary SQL without compromising the server.",
         features: [
-          "➜ Independent quote cart via secure HTTP-only cookies.",
-          "➜ 4 AJAX endpoints with server and client-side nonce validation.",
-          "➜ Custom database created with dbDelta() and full CRUD via $wpdb.",
-          "➜ Admin panel with custom states: New → Contacted → Converted → Rejected.",
-          "➜ HTML email notifications with custom SMTP configuration from the panel.",
-          "➜ 3 bundled shortcodes: [quote_cart], [quote_badge], [quote_add_button].",
+          "➜ Two-layer SQL sandbox: read-only connection + SQLite authorizer with a function allowlist.",
+          "➜ Cooperative timeout via progress handler to block expensive queries (recursive CTEs, cartesian products).",
+          "➜ 27 escape attempts as automated tests (DDL, ATTACH, PRAGMA, dangerous functions, multi-statement).",
+          "➜ Case engine decoupled from content: each mystery is a directory with JSON metadata and a generator script.",
+          "➜ Reproducibly generated data (fixed seed), verified with automated checks before being served.",
+          "➜ Fully server-side accusation validation, with suspect-specific feedback and an attempt limit.",
         ],
       },
     },
@@ -247,7 +293,7 @@ const projects = [
       matrixText(el as HTMLElement, d.section[k] ?? (el as HTMLElement).textContent, { duration: 550, delay: delayIdx * 80 });
       delayIdx++;
     });
-    ["p4"].forEach((id) => {
+    ["001"].forEach((id) => {
       const titleEl = document.querySelector(`[data-proj-title="${id}"]`);
       const descEl = document.querySelector(`[data-proj-desc="${id}"]`);
       const catEl = document.querySelector(`[data-proj-cat="${id}"]`);
